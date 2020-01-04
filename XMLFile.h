@@ -3,7 +3,6 @@
 
 #include <iostream>
 
-
 using namespace std;
 
 class XMLFile{
@@ -11,7 +10,6 @@ class XMLFile{
 
 public:
     XMLFile(string fileName) : FILE_NAME(fileName) {};
-
     string getFileName();
 };
 

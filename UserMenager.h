@@ -7,10 +7,11 @@
 
 #include "User.h"
 #include "UsersFile.h"
+#include "AssistantMethods.h"
 
 using namespace std;
 
-class UserMenager{
+class UserMenager {
     int IDLoggedUser;
     vector <User> users;
     UsersFile usersFile;
@@ -20,20 +21,17 @@ class UserMenager{
     bool ifExistLogin(string login);
 
 public:
-    UserMenager(string usersFileName) : usersFile(usersFileName){
+    UserMenager(string usersFileName) : usersFile(usersFileName) {
         IDLoggedUser = 0;
         users = usersFile.loadUsersFromFile();
     };
     void userRegistration();
     void writeAllUsers();
+    void userLogin();
+    void userLogout();
+    bool ifUserIsLogged();
+    void changePasswordLoggedUser();
+    int getIDLoggedUser();
 };
 
 #endif
-
-/*
-+ userLogin() : Integer
-+ passwordChangeOfLoggedUser() : void
-+ userLogout() : void
-+ ifUserIsLogged() : Bool
-+ getIdLoggedUser() : Integer
-*/

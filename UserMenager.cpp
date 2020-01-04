@@ -1,11 +1,12 @@
 #include "UserMenager.h"
 
-/*int UserMenager::getIDLoggedUser() {
+int UserMenager::getIDLoggedUser() {
     return IDLoggedUser;
-}*/
-
+}
 
 void UserMenager::userRegistration() {
+    system("cls");
+    cout << ">>>REJESTRACJA<<<" << endl << endl;
     User user = enterNewUserData();
     users.push_back(user);
     usersFile.joinUserToFile(user);
@@ -16,6 +17,17 @@ void UserMenager::userRegistration() {
 User UserMenager::enterNewUserData() {
     User user;
     user.setUserID(getIdNewUser());
+
+    string name;
+    cout << "Podaj imie: ";
+    cin >> name;
+    user.setName(name);
+
+    string surname;
+    cout << "Podaj nazwisko: ";
+    cin >> surname;
+    user.setSurname(surname);
+
     string login;
     do {
         cout << "Podaj login: ";
@@ -27,16 +39,6 @@ User UserMenager::enterNewUserData() {
     cout << "Podaj haslo: ";
     cin >> password;
     user.setPassword(password);
-
-    string name;
-    cout << "Podaj imie: ";
-    cin >> name;
-    user.setName(name);
-
-    string surname;
-    cout << "Podaj nazwisko: ";
-    cin >> surname;
-    user.setSurname(surname);
 
     return user;
 }
@@ -66,22 +68,23 @@ void UserMenager::writeAllUsers() {
     }
 }
 
-/*
-void UserMenager::logowanieUsera() {
-    string login = "", haslo = "";
+void UserMenager::userLogin() {
+    system("cls");
+    cout << ">>>LOGOWANIE<<<" << endl << endl;
+    string login = "", password = "";
 
     cout << "Podaj login: ";
-    login = MetodyPomocnicze::wczytajLinie();
+    login = AssistantMethods::wczytajLinie();
 
-    vector <User>::iterator itr = uzytkownicy.begin();
-    while (itr != uzytkownicy.end()) {
-        if (itr -> pobierzLogin() == login) {
-            for (int iloscProb = 3; iloscProb > 0; iloscProb--) {
-                cout << "Podaj haslo. Pozostalo prob: " << iloscProb << ": ";
-                haslo = MetodyPomocnicze::wczytajLinie();
+    vector <User>::iterator itr = users.begin();
+    while (itr != users.end()) {
+        if (itr -> getLogin() == login) {
+            for (int attemptQuantity = 3; attemptQuantity > 0; attemptQuantity--) {
+                cout << "Podaj haslo. Pozostalo prob: " << attemptQuantity << ": ";
+                password = AssistantMethods::wczytajLinie();
 
-                if (itr -> pobierzHaslo() == haslo) {
-                    idZalogowanegoUsera = itr -> pobierzId();
+                if (itr -> getPassword() == password) {
+                    IDLoggedUser = itr -> getUserID();
                     cout << endl << "Zalogowales sie." << endl << endl;
                     system("pause");
                     return;
@@ -93,42 +96,42 @@ void UserMenager::logowanieUsera() {
         }
         itr++;
     }
-    cout << "Nie ma Usera z takim loginem" << endl << endl;
+    cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
     system("pause");
     return;
 }
 
-void UserMenager::wylogowanieUsera() {
-    idZalogowanegoUsera = 0;
+void UserMenager::userLogout() {
+    IDLoggedUser = 0;
 }
 
-bool UserMenager::czyUserJestZalogowany() {
-    if(idZalogowanegoUsera > 0) {
+bool UserMenager::ifUserIsLogged() {
+    if(IDLoggedUser > 0) {
         return true;
     } else {
         return false;
     }
 }
 
-void UserMenager::zmianaHaslaZalogowanegoUsera() {
-    string noweHaslo = "";
+void UserMenager::changePasswordLoggedUser() {
+    system("cls");
+    cout << ">>>ZMIANA HASLA<<<" << endl << endl;
+    string newPassword = "";
 
-    if(czyUserJestZalogowany()) {
+    if(ifUserIsLogged()) {
         cout << "Podaj nowe haslo: ";
-        noweHaslo = MetodyPomocnicze::wczytajLinie();
+        newPassword = AssistantMethods::wczytajLinie();
 
-        for (vector <User>::iterator itr = uzytkownicy.begin(); itr != uzytkownicy.end(); itr++) {
-            if (itr -> pobierzId() == idZalogowanegoUsera) {
-                itr -> ustawHaslo(noweHaslo);
+        for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++) {
+            if (itr -> getUserID() == IDLoggedUser) {
+                itr -> setPassword(newPassword);
                 cout << "Haslo zostalo zmienione." << endl << endl;
                 system("pause");
             }
         }
-        plikZUserami.zapiszWszystkichUserowDoPliku(uzytkownicy);
+        usersFile.saveUsersChangesToFile(users);
     } else {
         cout << "Aby zmienic haslo, nalezy najpierw sie zalogowac" << endl;
         system("pause");
     }
 }
-
-*/

@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class User{
+class User {
     int userID;
     string login;
     string pssword;

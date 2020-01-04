@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class Budget{
+class Budget {
     UserMenager userMenager;
     //IncomesManager *incomesManager;
     //ExpensesManager *expensesManager;
@@ -16,11 +16,17 @@ public:
 
     void userRegistration();
     void writeAllUsers();
-    //int userLogin();
-    //void userLogout();
+    void userLogin();
+    void userLogout();
+    bool ifUserIsLogged();
+    char selectOptionFromMainMenu();
+    char selectOptionFromUserMenu();
+    //void addIncome();
+    //void addExpense();
     //void balanceOfCurrentMonth();
     //void balanceOfPreviousMonth();
     //void balanceOfPassedPeriod();
+    void changePassword();
 
 };
 #endif
