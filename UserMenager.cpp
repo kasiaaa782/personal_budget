@@ -57,15 +57,16 @@ bool UserMenager::ifExistLogin(string login) {
     }
     return false;
 }
-/*
-void UserMenager::wypiszWszystkichUserow() {
-    for(int i = 0 ; i < uzytkownicy.size(); i++) {
-        cout << uzytkownicy[i].pobierzId() << endl;
-        cout << uzytkownicy[i].pobierzLogin() << endl;
-        cout << uzytkownicy[i].pobierzHaslo() << endl;
+
+void UserMenager::writeAllUsers() {
+    for(int i = 0 ; i < users.size(); i++) {
+        cout << users[i].getUserID() << endl;
+        cout << users[i].getLogin() << endl;
+        cout << users[i].getPassword() << endl;
     }
 }
 
+/*
 void UserMenager::logowanieUsera() {
     string login = "", haslo = "";
 

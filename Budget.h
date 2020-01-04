@@ -15,6 +15,7 @@ public:
         : userMenager(usersFileName) {};
 
     void userRegistration();
+    void writeAllUsers();
     //int userLogin();
     //void userLogout();
     //void balanceOfCurrentMonth();

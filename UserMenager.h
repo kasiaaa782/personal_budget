@@ -25,18 +25,15 @@ public:
         users = usersFile.loadUsersFromFile();
     };
     void userRegistration();
+    void writeAllUsers();
 };
 
 #endif
 
-/*+ userRegistration() : void
-+ writeAllUsers() : void
+/*
 + userLogin() : Integer
 + passwordChangeOfLoggedUser() : void
 + userLogout() : void
 + ifUserIsLogged() : Bool
 + getIdLoggedUser() : Integer
-
-- enterNewUserData() : Uzytkownik
-- getIdNewUser() : Integer
-- ifExistLogin() : Bool*/
+*/

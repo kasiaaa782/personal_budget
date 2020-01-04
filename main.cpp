@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
     Budget budget("Users");
-    budget.userRegistration();
+    budget.writeAllUsers();
     return 0;
 }
 
