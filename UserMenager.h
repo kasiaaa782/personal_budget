@@ -29,11 +29,11 @@ public:
     void userLogin();
     void userLogout();
     bool ifUserIsLogged();
+    void changePasswordLoggedUser();
 };
 
 #endif
 
 /*
-+ passwordChangeOfLoggedUser() : void
 + getIdLoggedUser() : Integer
 */

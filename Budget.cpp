@@ -52,3 +52,7 @@ char Budget::selectOptionFromUserMenu(){
     choice = AssistantMethods::wczytajZnak();
     return choice;
 }
+
+void Budget::changePassword(){
+    userMenager.changePasswordLoggedUser();
+}

@@ -4,11 +4,10 @@
 
 using namespace std;
 
-int main() {
+int _main() {
     Budget budget("Users.xml");
     while (true) {
         if (budget.ifUserIsLogged() == false) {
-
             switch (budget.selectOptionFromMainMenu()) {
             case '1':
                 budget.userRegistration();
@@ -42,10 +41,10 @@ int main() {
                 //budget.balanceOfPassedPeriod();
                 break;
             case '6':
-                //budget.changePassword();
+                budget.changePassword();
                 break;
             case '7':
-                //budget.userLogout();
+                budget.userLogout();
                 break;
             }
         }
@@ -53,11 +52,14 @@ int main() {
     return 0;
 }
 
-/*int main()
+
+int main()
 {
     Budget budget("Users");
-    budget.userLogout();
+    budget.userLogin();
+    budget.changePassword();
+
     return 0;
-}*/
+}
 
 

@@ -20,7 +20,7 @@ public:
     UsersFile(string fileName) : XMLFile(fileName) {};
     void joinUserToFile(User user);
     vector <User> loadUsersFromFile();
-    //void saveAllUsersToFile(vector <User> &users);
+    void saveUsersChangesToFile(vector <User> &users);
 };
 
 #endif

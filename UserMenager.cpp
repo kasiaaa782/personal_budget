@@ -7,6 +7,7 @@
 
 void UserMenager::userRegistration() {
     system("cls");
+    cout << ">>>REJESTRACJA<<<" << endl << endl;
     User user = enterNewUserData();
     users.push_back(user);
     usersFile.joinUserToFile(user);
@@ -15,6 +16,7 @@ void UserMenager::userRegistration() {
 }
 
 User UserMenager::enterNewUserData() {
+
     User user;
     user.setUserID(getIdNewUser());
 
@@ -70,6 +72,7 @@ void UserMenager::writeAllUsers() {
 
 void UserMenager::userLogin() {
     system("cls");
+    cout << ">>>LOGOWANIE<<<" << endl << endl;
     string login = "", password = "";
 
     cout << "Podaj login: ";
@@ -109,5 +112,28 @@ bool UserMenager::ifUserIsLogged() {
         return true;
     } else {
         return false;
+    }
+}
+
+void UserMenager::changePasswordLoggedUser() {
+    system("cls");
+    cout << ">>>ZMIANA HASLA<<<" << endl << endl;
+    string newPassword = "";
+
+    if(ifUserIsLogged()) {
+        cout << "Podaj nowe haslo: ";
+        newPassword = AssistantMethods::wczytajLinie();
+
+        for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++) {
+            if (itr -> getUserID() == IDLoggedUser) {
+                itr -> setPassword(newPassword);
+                cout << "Haslo zostalo zmienione." << endl << endl;
+                system("pause");
+            }
+        }
+        usersFile.saveUsersChangesToFile(users);
+    } else {
+        cout << "Aby zmienic haslo, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
     }
 }

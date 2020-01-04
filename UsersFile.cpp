@@ -47,67 +47,25 @@ vector <User> UsersFile::loadUsersFromFile(){
     }
     return users;
 }
-/*
-User UsersFile::pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami)
-{
-    Uzytkownik uzytkownik;
-    string pojedynczaDanaUzytkownika = "";
-    int numerPojedynczejDanejUzytkownika = 1;
 
-    for (int pozycjaZnaku = 0; pozycjaZnaku < daneJednegoUzytkownikaOddzielonePionowymiKreskami.length(); pozycjaZnaku++)
-    {
-        if (daneJednegoUzytkownikaOddzielonePionowymiKreskami[pozycjaZnaku] != '|')
-        {
-            pojedynczaDanaUzytkownika += daneJednegoUzytkownikaOddzielonePionowymiKreskami[pozycjaZnaku];
-        }
-        else
-        {
-            switch(numerPojedynczejDanejUzytkownika)
-            {
-            case 1:
-                uzytkownik.ustawId(atoi(pojedynczaDanaUzytkownika.c_str()));
-                break;
-            case 2:
-                uzytkownik.ustawLogin(pojedynczaDanaUzytkownika);
-                break;
-            case 3:
-                uzytkownik.ustawHaslo(pojedynczaDanaUzytkownika);
-                break;
-            }
-            pojedynczaDanaUzytkownika = "";
-            numerPojedynczejDanejUzytkownika++;
-        }
+void UsersFile::saveUsersChangesToFile(vector <User> &users){
+    CMarkup xml;
+
+    xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+    xml.AddElem("Users");
+    xml.IntoElem();
+
+    for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++){
+        xml.AddElem("User");
+        xml.IntoElem();
+        xml.AddElem("UserId", itr -> getUserID());
+        xml.AddElem("Login", itr -> getLogin());
+        xml.AddElem("Password", itr -> getPassword());
+        xml.AddElem("Name", itr -> getName());
+        xml.AddElem("Surname", itr -> getSurname());
+        xml.OutOfElem();
     }
-    return uzytkownik;
-}*/
 
-//void UsersFile::saveAllUsersToFile(vector <User> &users){
-   /* fstream plikTekstowy;
-    string liniaZDanymiUzytkownika = "";
-    vector <Uzytkownik>::iterator itrKoniec = --uzytkownicy.end();
+    xml.Save("Users.xml");
+}
 
-    plikTekstowy.open(pobierzNazwePliku().c_str(), ios::out);
-
-    if (plikTekstowy.good() == true)
-    {
-        for (vector <Uzytkownik>::iterator itr = uzytkownicy.begin(); itr != uzytkownicy.end(); itr++)
-        {
-            liniaZDanymiUzytkownika = zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(*itr);
-
-            if (itr == itrKoniec)
-            {
-               plikTekstowy << liniaZDanymiUzytkownika;
-            }
-            else
-            {
-                plikTekstowy << liniaZDanymiUzytkownika << endl;
-            }
-            liniaZDanymiUzytkownika = "";
-        }
-    }
-    else
-    {
-        cout << "Nie mozna otworzyc pliku " << pobierzNazwePliku() << endl;
-    }
-    plikTekstowy.close();
-}*/

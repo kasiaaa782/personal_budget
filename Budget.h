@@ -26,7 +26,7 @@ public:
     //void balanceOfCurrentMonth();
     //void balanceOfPreviousMonth();
     //void balanceOfPassedPeriod();
-    //void changePassword();
+    void changePassword();
 
 };
 #endif
