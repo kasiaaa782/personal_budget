@@ -1,26 +1,26 @@
 #include "Budget.h"
 
-void Budget::userRegistration(){
+void Budget::userRegistration() {
     userMenager.userRegistration();
 }
 
-void Budget::writeAllUsers(){
+void Budget::writeAllUsers() {
     userMenager.writeAllUsers();
 }
 
-void Budget::userLogin(){
+void Budget::userLogin() {
     userMenager.userLogin();
 }
 
-void Budget::userLogout(){
+void Budget::userLogout() {
     userMenager.userLogout();
 }
 
-bool Budget::ifUserIsLogged(){
+bool Budget::ifUserIsLogged() {
     userMenager.ifUserIsLogged();
 }
 
-char Budget::selectOptionFromMainMenu(){
+char Budget::selectOptionFromMainMenu() {
     char choice;
     system("cls");
     cout << "    >>> MENU  GLOWNE <<<" << endl;
@@ -34,7 +34,7 @@ char Budget::selectOptionFromMainMenu(){
     return choice;
 }
 
-char Budget::selectOptionFromUserMenu(){
+char Budget::selectOptionFromUserMenu() {
     char choice;
     system("cls");
     cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
@@ -53,6 +53,6 @@ char Budget::selectOptionFromUserMenu(){
     return choice;
 }
 
-void Budget::changePassword(){
+void Budget::changePassword() {
     userMenager.changePasswordLoggedUser();
 }

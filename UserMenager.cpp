@@ -1,9 +1,8 @@
 #include "UserMenager.h"
 
-/*int UserMenager::getIDLoggedUser() {
+int UserMenager::getIDLoggedUser() {
     return IDLoggedUser;
-}*/
-
+}
 
 void UserMenager::userRegistration() {
     system("cls");
@@ -16,7 +15,6 @@ void UserMenager::userRegistration() {
 }
 
 User UserMenager::enterNewUserData() {
-
     User user;
     user.setUserID(getIdNewUser());
 

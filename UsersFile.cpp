@@ -1,15 +1,13 @@
 #include "UsersFile.h"
 
-void UsersFile::joinUserToFile(User user){
+void UsersFile::joinUserToFile(User user) {
     CMarkup xml;
     bool fileExists = xml.Load( "Users.xml" );
 
-    if (!fileExists)
-    {
+    if (!fileExists) {
         xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
         xml.AddElem("Users");
     }
-
     xml.FindElem();
     xml.IntoElem();
     xml.AddElem("User");
@@ -23,14 +21,14 @@ void UsersFile::joinUserToFile(User user){
     xml.Save("Users.xml");
 }
 
-vector <User> UsersFile::loadUsersFromFile(){
+vector <User> UsersFile::loadUsersFromFile() {
     User user;
     vector <User> users;
     CMarkup xml;
     xml.Load( "Users.xml" );
     xml.FindElem(); // root Users element
     xml.IntoElem(); // inside Users
-    while( xml.FindElem("User")){
+    while( xml.FindElem("User")) {
         xml.IntoElem(); //inside User
         xml.FindElem("UserId");
         user.setUserID(atoi(MCD_2PCSZ(xml.GetData()))); //it is converted to an integer using atoi (MCD_2PCSZ is defined in Markup.h to return the string's const pointer)
@@ -48,14 +46,13 @@ vector <User> UsersFile::loadUsersFromFile(){
     return users;
 }
 
-void UsersFile::saveUsersChangesToFile(vector <User> &users){
+void UsersFile::saveUsersChangesToFile(vector <User> &users) {
+    //file overwrite
     CMarkup xml;
-
     xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
     xml.AddElem("Users");
     xml.IntoElem();
-
-    for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++){
+    for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++) {
         xml.AddElem("User");
         xml.IntoElem();
         xml.AddElem("UserId", itr -> getUserID());

@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int _main() {
+int main() {
     Budget budget("Users.xml");
     while (true) {
         if (budget.ifUserIsLogged() == false) {
@@ -52,14 +52,13 @@ int _main() {
     return 0;
 }
 
-
-int main()
+/*
+int _main()
 {
     Budget budget("Users");
-    budget.userLogin();
-    budget.changePassword();
+    budget.writeAllUsers();
 
     return 0;
-}
+}*/
 
 

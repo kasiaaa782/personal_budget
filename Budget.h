@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class Budget{
+class Budget {
     UserMenager userMenager;
     //IncomesManager *incomesManager;
     //ExpensesManager *expensesManager;
