@@ -16,8 +16,8 @@ public:
 
     void userRegistration();
     void writeAllUsers();
-    //int userLogin();
-    //void userLogout();
+    void userLogin();
+    void userLogout();
     //void balanceOfCurrentMonth();
     //void balanceOfPreviousMonth();
     //void balanceOfPassedPeriod();

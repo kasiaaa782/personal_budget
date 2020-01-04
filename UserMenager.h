@@ -26,14 +26,14 @@ public:
     };
     void userRegistration();
     void writeAllUsers();
+    void userLogin();
+    void userLogout();
 };
 
 #endif
 
 /*
-+ userLogin() : Integer
 + passwordChangeOfLoggedUser() : void
-+ userLogout() : void
 + ifUserIsLogged() : Bool
 + getIdLoggedUser() : Integer
 */

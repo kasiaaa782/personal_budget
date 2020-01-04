@@ -66,22 +66,21 @@ void UserMenager::writeAllUsers() {
     }
 }
 
-/*
-void UserMenager::logowanieUsera() {
-    string login = "", haslo = "";
+void UserMenager::userLogin() {
+    string login = "", password = "";
 
     cout << "Podaj login: ";
-    login = MetodyPomocnicze::wczytajLinie();
+    login = AssistantMethods::wczytajLinie();
 
-    vector <User>::iterator itr = uzytkownicy.begin();
-    while (itr != uzytkownicy.end()) {
-        if (itr -> pobierzLogin() == login) {
-            for (int iloscProb = 3; iloscProb > 0; iloscProb--) {
-                cout << "Podaj haslo. Pozostalo prob: " << iloscProb << ": ";
-                haslo = MetodyPomocnicze::wczytajLinie();
+    vector <User>::iterator itr = users.begin();
+    while (itr != users.end()) {
+        if (itr -> getLogin() == login) {
+            for (int attemptQuantity = 3; attemptQuantity > 0; attemptQuantity--) {
+                cout << "Podaj haslo. Pozostalo prob: " << attemptQuantity << ": ";
+                password = AssistantMethods::wczytajLinie();
 
-                if (itr -> pobierzHaslo() == haslo) {
-                    idZalogowanegoUsera = itr -> pobierzId();
+                if (itr -> getPassword() == password) {
+                    IDLoggedUser = itr -> getUserID();
                     cout << endl << "Zalogowales sie." << endl << endl;
                     system("pause");
                     return;
@@ -93,15 +92,15 @@ void UserMenager::logowanieUsera() {
         }
         itr++;
     }
-    cout << "Nie ma Usera z takim loginem" << endl << endl;
+    cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
     system("pause");
     return;
 }
 
-void UserMenager::wylogowanieUsera() {
-    idZalogowanegoUsera = 0;
+void UserMenager::userLogout() {
+    IDLoggedUser = 0;
 }
-
+/*
 bool UserMenager::czyUserJestZalogowany() {
     if(idZalogowanegoUsera > 0) {
         return true;
