@@ -6,6 +6,7 @@
 
 
 void UserMenager::userRegistration() {
+    system("cls");
     User user = enterNewUserData();
     users.push_back(user);
     usersFile.joinUserToFile(user);
@@ -16,6 +17,17 @@ void UserMenager::userRegistration() {
 User UserMenager::enterNewUserData() {
     User user;
     user.setUserID(getIdNewUser());
+
+    string name;
+    cout << "Podaj imie: ";
+    cin >> name;
+    user.setName(name);
+
+    string surname;
+    cout << "Podaj nazwisko: ";
+    cin >> surname;
+    user.setSurname(surname);
+
     string login;
     do {
         cout << "Podaj login: ";
@@ -27,16 +39,6 @@ User UserMenager::enterNewUserData() {
     cout << "Podaj haslo: ";
     cin >> password;
     user.setPassword(password);
-
-    string name;
-    cout << "Podaj imie: ";
-    cin >> name;
-    user.setName(name);
-
-    string surname;
-    cout << "Podaj nazwisko: ";
-    cin >> surname;
-    user.setSurname(surname);
 
     return user;
 }
@@ -67,6 +69,7 @@ void UserMenager::writeAllUsers() {
 }
 
 void UserMenager::userLogin() {
+    system("cls");
     string login = "", password = "";
 
     cout << "Podaj login: ";
@@ -100,34 +103,11 @@ void UserMenager::userLogin() {
 void UserMenager::userLogout() {
     IDLoggedUser = 0;
 }
-/*
-bool UserMenager::czyUserJestZalogowany() {
-    if(idZalogowanegoUsera > 0) {
+
+bool UserMenager::ifUserIsLogged() {
+    if(IDLoggedUser > 0) {
         return true;
     } else {
         return false;
     }
 }
-
-void UserMenager::zmianaHaslaZalogowanegoUsera() {
-    string noweHaslo = "";
-
-    if(czyUserJestZalogowany()) {
-        cout << "Podaj nowe haslo: ";
-        noweHaslo = MetodyPomocnicze::wczytajLinie();
-
-        for (vector <User>::iterator itr = uzytkownicy.begin(); itr != uzytkownicy.end(); itr++) {
-            if (itr -> pobierzId() == idZalogowanegoUsera) {
-                itr -> ustawHaslo(noweHaslo);
-                cout << "Haslo zostalo zmienione." << endl << endl;
-                system("pause");
-            }
-        }
-        plikZUserami.zapiszWszystkichUserowDoPliku(uzytkownicy);
-    } else {
-        cout << "Aby zmienic haslo, nalezy najpierw sie zalogowac" << endl;
-        system("pause");
-    }
-}
-
-*/

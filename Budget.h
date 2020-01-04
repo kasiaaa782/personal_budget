@@ -18,9 +18,15 @@ public:
     void writeAllUsers();
     void userLogin();
     void userLogout();
+    bool ifUserIsLogged();
+    char selectOptionFromMainMenu();
+    char selectOptionFromUserMenu();
+    //void addIncome();
+    //void addExpense();
     //void balanceOfCurrentMonth();
     //void balanceOfPreviousMonth();
     //void balanceOfPassedPeriod();
+    //void changePassword();
 
 };
 #endif

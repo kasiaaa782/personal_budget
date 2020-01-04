@@ -28,12 +28,12 @@ public:
     void writeAllUsers();
     void userLogin();
     void userLogout();
+    bool ifUserIsLogged();
 };
 
 #endif
 
 /*
 + passwordChangeOfLoggedUser() : void
-+ ifUserIsLogged() : Bool
 + getIdLoggedUser() : Integer
 */
