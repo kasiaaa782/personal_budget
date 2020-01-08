@@ -13,20 +13,20 @@ string AssistantMethods::wczytajLinie() {
     return wejscie;
 }
 
-char AssistantMethods::wczytajZnak() {
-    string wejscie = "";
-    char znak  = {0};
+char AssistantMethods::loadChar() {
+    string input = "";
+    char varChar  = {0};
 
     while (true) {
-        getline(cin, wejscie);
+        getline(cin, input);
 
-        if (wejscie.length() == 1) {
-            znak = wejscie[0];
+        if (input.length() == 1) {
+            varChar = input[0];
             break;
         }
         cout << "To nie jest pojedynczy znak. Wpisz ponownie." << endl;
     }
-    return znak;
+    return varChar;
 }
 
 int AssistantMethods::konwersjaStringNaInt(string liczba) {

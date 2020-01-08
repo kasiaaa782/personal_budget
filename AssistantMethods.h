@@ -13,7 +13,7 @@ class AssistantMethods{
 public:
     static string konwerjsaIntNaString(int liczba);
     static string wczytajLinie();
-    static char wczytajZnak();
+    static char loadChar();
     static int konwersjaStringNaInt(string liczba);
     static string pobierzLiczbe(string tekst, int pozycjaZnaku);
     static int wczytajLiczbeCalkowita();

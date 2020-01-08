@@ -30,7 +30,7 @@ char Budget::selectOptionFromMainMenu() {
     cout << "8. Koniec programu" << endl;
     cout << "---------------------------" << endl;
     cout << "Twoj wybor: ";
-    choice = AssistantMethods::wczytajZnak();
+    choice = AssistantMethods::loadChar();
     return choice;
 }
 
@@ -49,7 +49,7 @@ char Budget::selectOptionFromUserMenu() {
     cout << "7. Wyloguj sie" << endl;
     cout << "---------------------------" << endl;
     cout << "Twoj wybor: ";
-    choice = AssistantMethods::wczytajZnak();
+    choice = AssistantMethods::loadChar();
     return choice;
 }
 

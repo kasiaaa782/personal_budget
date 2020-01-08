@@ -11,6 +11,8 @@ int main() {
             switch (budget.selectOptionFromMainMenu()) {
             case '1':
                 budget.userRegistration();
+                 cin.clear();
+                 cin.ignore();
                 break;
             case '2':
                 budget.userLogin();
