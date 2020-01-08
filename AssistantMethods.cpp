@@ -1,16 +1,16 @@
 #include "AssistantMethods.h"
 
-string AssistantMethods::konwerjsaIntNaString(int liczba) {
+string AssistantMethods::IntOnStringConvertion(int number) {
     ostringstream ss;
-    ss << liczba;
+    ss << number;
     string str = ss.str();
     return str;
 }
 
-string AssistantMethods::wczytajLinie() {
-    string wejscie = "";
-    getline(cin, wejscie);
-    return wejscie;
+string AssistantMethods::loadLine() {
+    string input = "";
+    getline(cin, input);
+    return input;
 }
 
 char AssistantMethods::loadChar() {
@@ -29,43 +29,43 @@ char AssistantMethods::loadChar() {
     return varChar;
 }
 
-int AssistantMethods::konwersjaStringNaInt(string liczba) {
-    int liczbaInt;
-    istringstream iss(liczba);
-    iss >> liczbaInt;
+int AssistantMethods::StringOnIntConvertion(string number) {
+    int numberInt;
+    istringstream iss(number);
+    iss >> numberInt;
 
-    return liczbaInt;
+    return numberInt;
 }
 
-string AssistantMethods::pobierzLiczbe(string tekst, int pozycjaZnaku) {
-    string liczba = "";
-    while(isdigit(tekst[pozycjaZnaku]) == true) {
-        liczba += tekst[pozycjaZnaku];
-        pozycjaZnaku ++;
+string AssistantMethods::getNumber(string text, int charPosition) {
+    string number = "";
+    while(isdigit(text[charPosition]) == true) {
+        number += text[charPosition];
+        charPosition ++;
     }
-    return liczba;
+    return number;
 }
 
-int AssistantMethods::wczytajLiczbeCalkowita(){
-    string wejscie = "";
-    int liczba = 0;
+int AssistantMethods::loadIntegerNumber(){
+    string input = "";
+    int number = 0;
 
     while(true){
-        getline(cin, wejscie);
-        stringstream myStream(wejscie);
-        if(myStream >> liczba){
+        getline(cin, input);
+        stringstream myStream(input);
+        if(myStream >> number){
             break;
         }
         cout << "To nie jest liczba. Wpisz ponownie." << endl;
     }
-    return liczba;
+    return number;
 }
 
-string AssistantMethods::zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst){
-    if (!tekst.empty())
+string AssistantMethods::changeFirstLetterOnUppercaseAndOthersOnLowercase(string text){
+    if (!text.empty())
     {
-        transform(tekst.begin(), tekst.end(), tekst.begin(), ::tolower);
-        tekst[0] = toupper(tekst[0]);
+        transform(text.begin(), text.end(), text.begin(), ::tolower);
+        text[0] = toupper(text[0]);
     }
-    return tekst;
+    return text;
 }

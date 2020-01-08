@@ -74,14 +74,14 @@ void UserMenager::userLogin() {
     string login = "", password = "";
 
     cout << "Podaj login: ";
-    login = AssistantMethods::wczytajLinie();
+    login = AssistantMethods::loadLine();
 
     vector <User>::iterator itr = users.begin();
     while (itr != users.end()) {
         if (itr -> getLogin() == login) {
             for (int attemptQuantity = 3; attemptQuantity > 0; attemptQuantity--) {
                 cout << "Podaj haslo. Pozostalo prob: " << attemptQuantity << ": ";
-                password = AssistantMethods::wczytajLinie();
+                password = AssistantMethods::loadLine();
 
                 if (itr -> getPassword() == password) {
                     IDLoggedUser = itr -> getUserID();
@@ -120,7 +120,7 @@ void UserMenager::changePasswordLoggedUser() {
 
     if(ifUserIsLogged()) {
         cout << "Podaj nowe haslo: ";
-        newPassword = AssistantMethods::wczytajLinie();
+        newPassword = AssistantMethods::loadLine();
 
         for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++) {
             if (itr -> getUserID() == IDLoggedUser) {

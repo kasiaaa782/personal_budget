@@ -11,13 +11,13 @@ using namespace std;
 class AssistantMethods{
 
 public:
-    static string konwerjsaIntNaString(int liczba);
-    static string wczytajLinie();
+    static string IntOnStringConvertion(int number);
+    static string loadLine();
     static char loadChar();
-    static int konwersjaStringNaInt(string liczba);
-    static string pobierzLiczbe(string tekst, int pozycjaZnaku);
-    static int wczytajLiczbeCalkowita();
-    static string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
+    static int StringOnIntConvertion(string number);
+    static string getNumber(string text, int charPosition);
+    static int loadIntegerNumber();
+    static string changeFirstLetterOnUppercaseAndOthersOnLowercase(string text);
 };
 
 #endif
