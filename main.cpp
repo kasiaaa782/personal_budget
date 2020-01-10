@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-    Budget budget("Users.xml");
+    Budget budget("Users.xml", "Incomes.xml");
     while (true) {
         if (budget.ifUserIsLogged() == false) {
             switch (budget.selectOptionFromMainMenu()) {
@@ -28,7 +28,7 @@ int main() {
         } else {
             switch (budget.selectOptionFromUserMenu()) {
             case '1':
-                //budget.addIncome();
+                budget.addIncome();
                 break;
             case '2':
                 //budget.addExpense();
@@ -54,13 +54,16 @@ int main() {
     return 0;
 }
 
-/*
+#include "IncomesFile.h"
+
 int _main()
 {
-    Budget budget("Users");
-    budget.writeAllUsers();
+    Budget budget("Users.xml", "Incomes.xml");
+    IncomesMenager incomesMenager("Incomes.xml", 1);
+    incomesMenager.addIncome();
+
 
     return 0;
-}*/
+}
 
 

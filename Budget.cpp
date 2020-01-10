@@ -10,10 +10,16 @@ void Budget::writeAllUsers() {
 
 void Budget::userLogin() {
     userMenager.userLogin();
+    if(userMenager.ifUserIsLogged()){
+        incomesMenager = new IncomesMenager(INCOMES_FILE_NAME, userMenager.getIDLoggedUser());
+    }
 }
 
 void Budget::userLogout() {
     userMenager.userLogout();
+    incomesMenager->userLogout();
+    delete incomesMenager;
+    incomesMenager = NULL;
 }
 
 bool Budget::ifUserIsLogged() {
@@ -56,3 +62,14 @@ char Budget::selectOptionFromUserMenu() {
 void Budget::changePassword() {
     userMenager.changePasswordLoggedUser();
 }
+
+void Budget::addIncome(){
+    if(userMenager.ifUserIsLogged()){
+        incomesMenager->addIncome();
+    }
+    else {
+        cout << "Aby dodac przychod, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
+    }
+}
+
