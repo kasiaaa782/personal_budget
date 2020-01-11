@@ -26,6 +26,8 @@ public:
     static int getDateFromSelectedPeriod();
     static int getCurrentDate();
     static string convertUnsignedShortOnString(unsigned short var);
+    static float convertionStringOnFloat(string numberStr);
+    static float getFloatNumber();
 };
 
 #endif

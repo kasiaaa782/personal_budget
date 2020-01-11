@@ -187,24 +187,22 @@ int AssistantMethods::getCurrentDate(){
     return date;
 }
 
+float AssistantMethods::convertionStringOnFloat(string numberStr) {
+    float number;
+    istringstream iss(numberStr);
+    iss >> number;
+    return number;
+}
 
-/*
-void AssistantMethods::getCurrentDate(){
-    //format RRRR-MM-DD
-    string date, year, month, day;
-    SYSTEMTIME st;
-    GetSystemTime(&st); // unsigned short
-    year = convertUnsignedShortOnString(st.wYear);
-    month = convertUnsignedShortOnString(st.wMonth);
-    day = convertUnsignedShortOnString(st.wDay);
-    if(month.size() == 1){
-        month = "0" + month;
+float AssistantMethods::getFloatNumber() {
+    float numberFloat;
+    string number;
+    cin >> number;
+    for(int i = 0; i < number.length(); i++) {
+        if(number[i] == ',') {
+            number[i] = '.';
+        }
     }
-    if(day.size() == 1){
-        day = "0" + day;
-    }
-    date = year + "-" + month + "-" + day;
-    cout << date << endl;
-}*/
-
-
+    numberFloat = convertionStringOnFloat(number);
+    return numberFloat;
+}

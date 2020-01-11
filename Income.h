@@ -10,10 +10,10 @@ class Income{
     int userID;
     int date;
     string item;
-    string amount;
+    float amount;
 
 public:
-    Income(int incomeID = 0, int userID = 0, int date = 0, string item = "", string amount = ""){
+    Income(int incomeID = 0, int userID = 0, int date = 0, string item = "", float amount = 0){
         this->incomeID = incomeID;
         this->userID = userID;
         this->date = date;
@@ -25,13 +25,13 @@ public:
     void setUserID(int newUserID);
     void setDate(int newDate);
     void setItem(string newItem);
-    void setAmount(string newAmount);
+    void setAmount(float newAmount);
 
     int getIncomeID();
     int getUserID();
     int getDate();
     string getItem();
-    string getAmount();
+    float getAmount();
 };
 
 #endif

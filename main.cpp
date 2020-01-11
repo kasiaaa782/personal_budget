@@ -29,6 +29,8 @@ int main() {
             switch (budget.selectOptionFromUserMenu()) {
             case '1':
                 budget.addIncome();
+                cin.clear();
+                cin.ignore();
                 break;
             case '2':
                 //budget.addExpense();
@@ -60,7 +62,7 @@ int _main()
 {
     Budget budget("Users.xml", "Incomes.xml");
     IncomesMenager incomesMenager("Incomes.xml", 1);
-    incomesMenager.addIncome();
+    AssistantMethods::getFloatNumber();
 
 
     return 0;

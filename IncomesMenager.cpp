@@ -20,7 +20,8 @@ void IncomesMenager::addIncome() {
 
 Income IncomesMenager::enterDataNewIncome() {
     Income income;
-    string item, amount;
+    string item;
+    float amount;
     int date;
 
     income.setUserID(LOGGED_USER_ID);
@@ -33,7 +34,7 @@ Income IncomesMenager::enterDataNewIncome() {
     cout << endl;
 
     cout << "Podaj wysokosc przychodu : ";
-    amount = AssistantMethods::loadLine();
+    amount = AssistantMethods::getFloatNumber();
     cout << endl;
 
     income.setDate(date);

@@ -18,7 +18,7 @@ void Income::setDate(int newDate){
 void Income::setItem(string newItem){
     item = newItem;
 }
-void Income::setAmount(string newAmount){
+void Income::setAmount(float newAmount){
     amount = newAmount;
 }
 
@@ -38,6 +38,6 @@ string Income::getItem(){
     return item;
 }
 
-string Income::getAmount(){
+float Income::getAmount(){
     return amount;
 }
