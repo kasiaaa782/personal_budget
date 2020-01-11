@@ -5,6 +5,8 @@
 #include <fstream>
 #include <sstream>
 #include <algorithm>
+#include <windows.h>
+#include <winbase.h>
 
 using namespace std;
 
@@ -18,6 +20,14 @@ public:
     static string getNumber(string text, int charPosition);
     static int loadIntegerNumber();
     static string changeFirstLetterOnUppercaseAndOthersOnLowercase(string text);
+    static bool checkFormatDate(string dateStr);
+    static int amountOfDaysInMonth(int monthNumber, int year);
+    static bool checkIfYearIsLeapYear(int year);
+    static string getDateFromSelectedPeriod();
+    static string getCurrentDate();
+    static string convertionUnsignedShortOnString(unsigned short var);
+    static float convertionStringOnFloat(string numberStr);
+    static float getFloatNumber();
 };
 
 #endif

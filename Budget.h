@@ -2,17 +2,25 @@
 #define BUDGET_H
 
 #include "UserMenager.h"
+#include "IncomesMenager.h"
 
 using namespace std;
 
 class Budget {
     UserMenager userMenager;
-    //IncomesManager *incomesManager;
+    IncomesMenager *incomesMenager;
+    const string INCOMES_FILE_NAME;
     //ExpensesManager *expensesManager;
 
 public:
-    Budget(string usersFileName) //, string incomesFileName, string expensesFileName
-        : userMenager(usersFileName) {};
+    Budget(string usersFileName, string incomesFileName)// string expensesFileName
+        : userMenager(usersFileName), INCOMES_FILE_NAME(incomesFileName) {
+            incomesMenager = NULL;
+    };
+    ~Budget(){
+        delete incomesMenager;
+        incomesMenager = NULL;
+    };
 
     void userRegistration();
     void writeAllUsers();
@@ -21,7 +29,7 @@ public:
     bool ifUserIsLogged();
     char selectOptionFromMainMenu();
     char selectOptionFromUserMenu();
-    //void addIncome();
+    void addIncome();
     //void addExpense();
     //void balanceOfCurrentMonth();
     //void balanceOfPreviousMonth();
