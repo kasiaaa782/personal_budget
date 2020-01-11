@@ -16,7 +16,6 @@ string AssistantMethods::loadLine() {
 char AssistantMethods::loadChar() {
     string input = "";
     char varChar  = {0};
-
     while (true) {
         getline(cin, input);
 
@@ -33,7 +32,6 @@ int AssistantMethods::StringOnIntConvertion(string number) {
     int numberInt;
     istringstream iss(number);
     iss >> numberInt;
-
     return numberInt;
 }
 
@@ -49,7 +47,6 @@ string AssistantMethods::getNumber(string text, int charPosition) {
 int AssistantMethods::loadIntegerNumber(){
     string input = "";
     int number = 0;
-
     while(true){
         getline(cin, input);
         stringstream myStream(input);

@@ -10,8 +10,6 @@
 #include "XMLFile.h"
 #include "Markup.h"
 
-
-
 using namespace std;
 
 class IncomesFile : public XMLFile{
@@ -24,10 +22,6 @@ public:
     };
     vector <Income> loadIncomesFromFile(int idLoggedUser);
     bool joinIncomeToFile(Income income);
-
-   // void deleteIncomeFromFile(int incomeDeletedID);
-    //void editIncomeInFile(Income income);
-    //int podajIdOstatniegoAdresataPoUsunieciuWybranegoAdresataZPliku(int idUsunietegoAdresata);
 
     int getLastIncomeID();
     void setLastIncomeID(int newLastIncomeID);

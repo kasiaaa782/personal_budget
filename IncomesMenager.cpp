@@ -72,7 +72,6 @@ string IncomesMenager::getDateFromUser() {
 }
 
 /*
-
 void AdresatMenadzer::wyswietlWszystkichAdresatow(){
     system("cls");
     if (!adresaci.empty()){
