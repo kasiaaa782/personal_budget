@@ -17,7 +17,7 @@ class IncomesMenager{
     IncomesFile incomesFile;
 
     Income enterDataNewIncome();
-    int getDateFromUser();
+    string getDateFromUser();
     /*void wyswietlDaneAdresata(Adresat adresat);
     int podajIdWybranegoAdresata();
     char wybierzOpcjeZMenuEdycja();

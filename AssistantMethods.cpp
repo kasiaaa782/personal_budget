@@ -141,8 +141,7 @@ bool AssistantMethods::checkIfYearIsLeapYear(int year) {
         return false;
 }
 
-int AssistantMethods::getDateFromSelectedPeriod() {
-    int date;
+string AssistantMethods::getDateFromSelectedPeriod() {
     string dateStr;
     cout << endl << "Wybierz date formatu RRRR-MM-DD: ";
     dateStr = AssistantMethods::loadLine();
@@ -151,30 +150,24 @@ int AssistantMethods::getDateFromSelectedPeriod() {
         cout << "Podaj ponownie date: ";
         cin >> dateStr;
     }
-    yearStr = dateStr.substr(0,4);
-    monthStr = dateStr.substr(5,2);
-    dayStr = dateStr.substr(8,2);
-    dateStr = yearStr + monthStr + dayStr;
-    date = atoi(dateStr.c_str());
-    return date;
+    return dateStr;
 }
 
-string AssistantMethods::convertUnsignedShortOnString(unsigned short var) {
+string AssistantMethods::convertionUnsignedShortOnString(unsigned short var) {
     ostringstream ss;
     ss << var;
     string str = ss.str();
     return str;
 }
 
-int AssistantMethods::getCurrentDate(){
+string AssistantMethods::getCurrentDate(){
     //format RRRR-MM-DD
     string dateStr, year, month, day;
-    int date;
     SYSTEMTIME st;
     GetLocalTime(&st); // unsigned short
-    year = convertUnsignedShortOnString(st.wYear);
-    month = convertUnsignedShortOnString(st.wMonth);
-    day = convertUnsignedShortOnString(st.wDay);
+    year = convertionUnsignedShortOnString(st.wYear);
+    month = convertionUnsignedShortOnString(st.wMonth);
+    day = convertionUnsignedShortOnString(st.wDay);
     if(month.size() == 1){
         month = "0" + month;
     }
@@ -183,8 +176,7 @@ int AssistantMethods::getCurrentDate(){
     }
     dateStr = year + "-" + month + "-" + day;
     cout << dateStr;
-    date = atoi(dateStr.c_str());
-    return date;
+    return dateStr;
 }
 
 float AssistantMethods::convertionStringOnFloat(string numberStr) {

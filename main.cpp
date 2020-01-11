@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int main() {
+int _main() {
     Budget budget("Users.xml", "Incomes.xml");
     while (true) {
         if (budget.ifUserIsLogged() == false) {
@@ -58,12 +58,11 @@ int main() {
 
 #include "IncomesFile.h"
 
-int _main()
+int main()
 {
     Budget budget("Users.xml", "Incomes.xml");
-    IncomesMenager incomesMenager("Incomes.xml", 1);
-    AssistantMethods::getFloatNumber();
-
+    IncomesMenager incomesMenager("Incomes.xml", 2);
+    incomesMenager.addIncome();
 
     return 0;
 }

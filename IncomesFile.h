@@ -8,6 +8,8 @@
 #include "Income.h"
 #include "AssistantMethods.h"
 #include "XMLFile.h"
+#include "Markup.h"
+
 
 
 using namespace std;

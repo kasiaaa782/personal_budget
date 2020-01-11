@@ -23,9 +23,9 @@ public:
     static bool checkFormatDate(string dateStr);
     static int amountOfDaysInMonth(int monthNumber, int year);
     static bool checkIfYearIsLeapYear(int year);
-    static int getDateFromSelectedPeriod();
-    static int getCurrentDate();
-    static string convertUnsignedShortOnString(unsigned short var);
+    static string getDateFromSelectedPeriod();
+    static string getCurrentDate();
+    static string convertionUnsignedShortOnString(unsigned short var);
     static float convertionStringOnFloat(string numberStr);
     static float getFloatNumber();
 };

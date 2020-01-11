@@ -22,7 +22,7 @@ Income IncomesMenager::enterDataNewIncome() {
     Income income;
     string item;
     float amount;
-    int date;
+    string date;
 
     income.setUserID(LOGGED_USER_ID);
     income.setIncomeID(incomesFile.getLastIncomeID() + 1);
@@ -33,7 +33,7 @@ Income IncomesMenager::enterDataNewIncome() {
     item = AssistantMethods::loadLine();
     cout << endl;
 
-    cout << "Podaj wysokosc przychodu : ";
+    cout << "Podaj wysokosc przychodu (w zl.): ";
     amount = AssistantMethods::getFloatNumber();
     cout << endl;
 
@@ -44,8 +44,8 @@ Income IncomesMenager::enterDataNewIncome() {
     return income;
 }
 
-int IncomesMenager::getDateFromUser() {
-    int date;
+string IncomesMenager::getDateFromUser() {
+    string date;
     cout << "Podaj date: " << endl;
     cout << "1. Z dnia dzisiejszego." << endl;
     cout << "2. Wybierz inna date." << endl;
