@@ -10,8 +10,6 @@
 #include "XMLFile.h"
 #include "Markup.h"
 
-
-
 using namespace std;
 
 class IncomesFile : public XMLFile{

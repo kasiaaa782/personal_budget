@@ -4,8 +4,8 @@
 
 using namespace std;
 
-int _main() {
-    Budget budget("Users.xml", "Incomes.xml");
+int main() {
+    Budget budget("Users.xml", "Incomes.xml", "Expenses.xml");
     while (true) {
         if (budget.ifUserIsLogged() == false) {
             switch (budget.selectOptionFromMainMenu()) {
@@ -33,7 +33,9 @@ int _main() {
                 cin.ignore();
                 break;
             case '2':
-                //budget.addExpense();
+                budget.addExpense();
+                cin.clear();
+                cin.ignore();
                 break;
             case '3':
                 //budget.balanceOfCurrentMonth();
@@ -58,11 +60,11 @@ int _main() {
 
 #include "IncomesFile.h"
 
-int main()
+int _main()
 {
-    Budget budget("Users.xml", "Incomes.xml");
-    IncomesMenager incomesMenager("Incomes.xml", 2);
-    incomesMenager.addIncome();
+    Budget budget("Users.xml", "Incomes.xml", "Expenses.xml");
+    ExpensesMenager expensesMenager("Expense.xml", 2);
+    expensesMenager.addExpense();
 
     return 0;
 }

@@ -18,12 +18,6 @@ class IncomesMenager{
 
     Income enterDataNewIncome();
     string getDateFromUser();
-    /*void wyswietlDaneAdresata(Adresat adresat);
-    int podajIdWybranegoAdresata();
-    char wybierzOpcjeZMenuEdycja();
-    int usunAdresata();
-    void zaktualizujDaneWybranegoAdresata(Adresat adresat);
-    void wyswietlIloscWyszukanychAdresatow(int iloscAdresatow);*/
 
 public:
     IncomesMenager(string incomesFileName, int loggedUserID)
@@ -31,11 +25,7 @@ public:
             incomes = incomesFile.loadIncomesFromFile(LOGGED_USER_ID);
     };
     void addIncome();
-    //void writeAllIncomes();
-    //char selectOptionFromBudgetMenu();
     void userLogout();
-   // void deleteIncome();
-    //void editIncome();
     //void searchIncomesOfCurrentMonth();
     //void searchIncomesOfPreviousMonth();
     //void searchIncomesOfPassedPeriod();
