@@ -41,17 +41,19 @@ vector <Income> IncomesFile::loadIncomesFromFile(int idLoggedUser) {
     while( xml.FindElem("Income")) {
         xml.IntoElem();
         xml.FindElem("IncomeID");
-        income.setIncomeID(atoi(MCD_2PCSZ(xml.GetData()))); //it is converted to an integer using atoi (MCD_2PCSZ is defined in Markup.h to return the string's const pointer)
+        income.setIncomeID(atoi(MCD_2PCSZ(xml.GetData())));
         xml.FindElem("UserID");
         income.setUserID(atoi(MCD_2PCSZ(xml.GetData()))); //it is converted to an integer using atoi (MCD_2PCSZ is defined in Markup.h to return the string's const pointer)
-        xml.FindElem("Date");
-        income.setDate(xml.GetData());
-        xml.FindElem("Item");
-        income.setItem(xml.GetData());
-        xml.FindElem("Amount");
-        income.setAmount(AssistantMethods::convertionStringOnFloat(xml.GetData()));
-        xml.OutOfElem(); //opuszczamy obiekt
-        incomes.push_back(income);
+        if(income.getUserID() == idLoggedUser){
+            xml.FindElem("Date");
+            income.setDate(xml.GetData());
+            xml.FindElem("Item");
+            income.setItem(xml.GetData());
+            xml.FindElem("Amount");
+            income.setAmount(AssistantMethods::convertionStringOnFloat(xml.GetData()));
+            incomes.push_back(income);
+        }
+        xml.OutOfElem();
     }
     setLastIncomeID(income.getIncomeID());
     return incomes;

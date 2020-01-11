@@ -36,7 +36,6 @@ vector <Expense> ExpensesFile::loadExpensesFromFile(int idLoggedUser) {
 
     CMarkup xml;
     xml.Load( "Expenses.xml" );
-
     xml.FindElem();
     xml.IntoElem();
     while( xml.FindElem("Expense")) {
@@ -45,17 +44,17 @@ vector <Expense> ExpensesFile::loadExpensesFromFile(int idLoggedUser) {
         expense.setExpenseID(atoi(MCD_2PCSZ(xml.GetData()))); //it is converted to an integer using atoi (MCD_2PCSZ is defined in Markup.h to return the string's const pointer)
         xml.FindElem("UserID");
         expense.setUserID(atoi(MCD_2PCSZ(xml.GetData()))); //it is converted to an integer using atoi (MCD_2PCSZ is defined in Markup.h to return the string's const pointer)
-        xml.FindElem("Date");
-        expense.setDate(xml.GetData());
-        xml.FindElem("Item");
-        expense.setItem(xml.GetData());
-        xml.FindElem("Amount");
-        expense.setAmount(AssistantMethods::convertionStringOnFloat(xml.GetData()));
+        if(expense.getUserID() == idLoggedUser){
+            xml.FindElem("Date");
+            expense.setDate(xml.GetData());
+            xml.FindElem("Item");
+            expense.setItem(xml.GetData());
+            xml.FindElem("Amount");
+            expense.setAmount(AssistantMethods::convertionStringOnFloat(xml.GetData()));
+            expenses.push_back(expense);
+        }
         xml.OutOfElem();
-        expenses.push_back(expense);
     }
     setLastExpenseID(expense.getExpenseID());
     return expenses;
 }
-
-
