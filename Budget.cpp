@@ -82,7 +82,7 @@ void Budget::addExpense(){
         expensesMenager->addExpense();
     }
     else {
-        cout << "Aby dodac przychod, nalezy najpierw sie zalogowac" << endl;
+        cout << "Aby dodac wydatek, nalezy najpierw sie zalogowac" << endl;
         system("pause");
     }
 }

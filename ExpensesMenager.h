@@ -18,12 +18,6 @@ class ExpensesMenager{
 
     Expense enterDataNewExpense();
     string getDateFromUser();
-    /*void wyswietlDaneAdresata(Adresat adresat);
-    int podajIdWybranegoAdresata();
-    char wybierzOpcjeZMenuEdycja();
-    int usunAdresata();
-    void zaktualizujDaneWybranegoAdresata(Adresat adresat);
-    void wyswietlIloscWyszukanychAdresatow(int iloscAdresatow);*/
 
 public:
     ExpensesMenager(string expensesFileName, int loggedUserID)
