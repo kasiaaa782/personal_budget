@@ -74,3 +74,30 @@ int ExpensesMenager::getDateFromUser() {
         }
     }
 }
+
+void ExpensesMenager::printExpenseData(Expense expense){
+    cout << endl << "ID wydatku:         " << expense.getExpenseID() << endl;
+    cout << "Data:               " << AssistantMethods::changeDateOnString(expense.getDate()) << endl;
+    cout << "Rodzaj wydatku:     " << expense.getItem()<< endl;
+    cout << "Wysokosc wydatku:   " << expense.getAmount() << endl;
+}
+
+void ExpensesMenager::printExpensesOfCurrentMonth(){
+    string currentMonth = AssistantMethods::getMonthFromDate(AssistantMethods::getCurrentDate());
+    string month;
+    if(!expenses.empty()){
+        cout << "WYDATKI Z OBECNEGO MIESIACA: " << endl;
+        for (vector <Expense> :: iterator itr = expenses.begin(); itr != expenses.end(); itr++)
+        {
+            month = AssistantMethods::getMonthFromDate(AssistantMethods::changeDateOnString(itr -> getDate()));
+            if(month == currentMonth){
+                printExpenseData(*itr);
+            }
+        }
+        cout << endl;
+    }
+    else{
+        cout << endl << "Nie wprowadzono zadnych wydatkow." << endl << endl;
+    }
+    system("pause");
+}

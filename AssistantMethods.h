@@ -31,6 +31,7 @@ public:
     static int changeDateOnIntWithoutDashes(string dateStr);
     static int changeDateOnInt(string dateStr);
     static string changeDateOnString(int dateInt);
+    static string getMonthFromDate(string date);
 };
 
 #endif

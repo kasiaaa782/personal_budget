@@ -63,12 +63,14 @@ int _main() {
 }
 
 #include "IncomesMenager.h"
+#include "ExpensesMenager.h"
 
 int main()
 {
     Budget budget("Users.xml", "Incomes.xml", "Expenses.xml");
-    IncomesMenager IncomesMenager("Incomes.xml", 2);
-    budget.balanceOfCurrentMonth();
+    IncomesMenager incomesMenager("Incomes.xml", 2);
+    ExpensesMenager expensesMenager("Expenses.xml", 2);
+    expensesMenager.printExpensesOfCurrentMonth();
 
 
     return 0;

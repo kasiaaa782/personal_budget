@@ -90,7 +90,7 @@ void Budget::addExpense(){
 void Budget::balanceOfCurrentMonth(){
     cout << ">>>BILANS Z AKTUALNEGO MIESIACA<<<" << endl;
     cout << endl;
-//    incomesMenager.printIncomesOfCurrentMonth();
+    incomesMenager->printIncomesOfCurrentMonth();
     cout << endl;
     cout << "Wydatki: " << endl;
     //printExpensesOfCurrentMonth();

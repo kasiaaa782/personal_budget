@@ -18,6 +18,7 @@ class ExpensesMenager{
 
     Expense enterDataNewExpense();
     int getDateFromUser();
+    void printExpenseData(Expense expense);
 
 public:
     ExpensesMenager(string expensesFileName, int loggedUserID)
@@ -26,7 +27,7 @@ public:
     };
     void addExpense();
     void userLogout();
-    //void searchIncomesOfCurrentMonth();
+    void printExpensesOfCurrentMonth();
     //void searchIncomesOfPreviousMonth();
     //void searchIncomesOfPassedPeriod();
 

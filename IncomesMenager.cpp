@@ -77,19 +77,22 @@ int IncomesMenager::getDateFromUser() {
 
 void IncomesMenager::printIncomeData(Income income){
     cout << endl << "ID przychodu:         " << income.getIncomeID() << endl;
-    cout << "Data:                 " << income.getDate() << endl;
+    cout << "Data:                 " << AssistantMethods::changeDateOnString(income.getDate()) << endl;
     cout << "Rodzaj przychodu:     " << income.getItem()<< endl;
     cout << "Wysokosc przychodu:   " << income.getAmount() << endl;
 }
 
 void IncomesMenager::printIncomesOfCurrentMonth(){
+    string currentMonth = AssistantMethods::getMonthFromDate(AssistantMethods::getCurrentDate());
+    string month;
     if(!incomes.empty()){
         cout << "PRZYCHODY Z OBECNEGO MIESIACA: " << endl;
         for (vector <Income> :: iterator itr = incomes.begin(); itr != incomes.end(); itr++)
         {
-/*            if(itr -> getDate().substr(5,2))){
+            month = AssistantMethods::getMonthFromDate(AssistantMethods::changeDateOnString(itr -> getDate()));
+            if(month == currentMonth){
                 printIncomeData(*itr);
-            }*/
+            }
         }
         cout << endl;
     }

@@ -220,3 +220,11 @@ string AssistantMethods::changeDateOnString(int dateInt){
     date.insert(7,"-");
     return date;
 }
+
+string AssistantMethods::getMonthFromDate(string date){
+    string month;
+    date.erase(0,5);
+    date.erase(2,3);
+    month = date;
+    return month;
+}
