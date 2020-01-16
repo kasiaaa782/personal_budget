@@ -9,6 +9,7 @@ int ExpensesFile::getLastExpenseID(){
 }
 
 bool ExpensesFile::joinExpenseToFile(Expense expense){
+    string dateStr;
     CMarkup xml;
     bool fileExists = xml.Load( "Expenses.xml" );
     if (!fileExists) {
@@ -21,10 +22,10 @@ bool ExpensesFile::joinExpenseToFile(Expense expense){
     xml.IntoElem();
     xml.AddElem("ExpenseID", expense.getExpenseID());
     xml.AddElem("UserID", expense.getUserID());
-    xml.AddElem("Date", expense.getDate());
+    dateStr = AssistantMethods::changeDateOnString(expense.getDate());
+    xml.AddElem("Date", dateStr);
     xml.AddElem("Item", expense.getItem());
     xml.AddElem("Amount", expense.getAmount());
-
     xml.Save("Expenses.xml");
     setLastExpenseID(getLastExpenseID() + 1);
 

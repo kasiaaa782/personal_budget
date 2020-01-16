@@ -9,6 +9,7 @@ int IncomesFile::getLastIncomeID(){
 }
 
 bool IncomesFile::joinIncomeToFile(Income income){
+    string dateStr;
     CMarkup xml;
     bool fileExists = xml.Load( "Incomes.xml" );
     if (!fileExists) {
@@ -21,10 +22,10 @@ bool IncomesFile::joinIncomeToFile(Income income){
     xml.IntoElem();
     xml.AddElem("IncomeID", income.getIncomeID());
     xml.AddElem("UserID", income.getUserID());
-    xml.AddElem("Date", income.getDate());
+    dateStr = AssistantMethods::changeDateOnString(income.getDate());
+    xml.AddElem("Date", dateStr);
     xml.AddElem("Item", income.getItem());
     xml.AddElem("Amount", income.getAmount());
-
     xml.Save("Incomes.xml");
     setLastIncomeID(getLastIncomeID() + 1);
     return true;
