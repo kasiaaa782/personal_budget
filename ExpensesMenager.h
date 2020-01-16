@@ -17,7 +17,7 @@ class ExpensesMenager{
     ExpensesFile expensesFile;
 
     Expense enterDataNewExpense();
-    string getDateFromUser();
+    int getDateFromUser();
 
 public:
     ExpensesMenager(string expensesFileName, int loggedUserID)

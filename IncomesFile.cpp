@@ -26,13 +26,15 @@ bool IncomesFile::joinIncomeToFile(Income income){
     xml.AddElem("Amount", income.getAmount());
 
     xml.Save("Incomes.xml");
-
+    setLastIncomeID(getLastIncomeID() + 1);
     return true;
 }
 
 vector <Income> IncomesFile::loadIncomesFromFile(int idLoggedUser) {
     Income income;
     vector <Income> incomes;
+    string dateStr;
+    int date;
 
     CMarkup xml;
     xml.Load( "Incomes.xml" );
@@ -46,7 +48,9 @@ vector <Income> IncomesFile::loadIncomesFromFile(int idLoggedUser) {
         income.setUserID(atoi(MCD_2PCSZ(xml.GetData()))); //it is converted to an integer using atoi (MCD_2PCSZ is defined in Markup.h to return the string's const pointer)
         if(income.getUserID() == idLoggedUser){
             xml.FindElem("Date");
-            income.setDate(xml.GetData());
+            dateStr = xml.GetData();
+            date = AssistantMethods::changeDateOnInt(dateStr);
+            income.setDate(date);
             xml.FindElem("Item");
             income.setItem(xml.GetData());
             xml.FindElem("Amount");

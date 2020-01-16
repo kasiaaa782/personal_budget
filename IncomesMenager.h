@@ -17,7 +17,8 @@ class IncomesMenager{
     IncomesFile incomesFile;
 
     Income enterDataNewIncome();
-    string getDateFromUser();
+    int getDateFromUser();
+    void printIncomeData(Income income);
 
 public:
     IncomesMenager(string incomesFileName, int loggedUserID)
@@ -26,7 +27,7 @@ public:
     };
     void addIncome();
     void userLogout();
-    //void searchIncomesOfCurrentMonth();
+    void printIncomesOfCurrentMonth();
     //void searchIncomesOfPreviousMonth();
     //void searchIncomesOfPassedPeriod();
 

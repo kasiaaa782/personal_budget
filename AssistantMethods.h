@@ -13,10 +13,12 @@ using namespace std;
 class AssistantMethods{
 
 public:
-    static string IntOnStringConvertion(int number);
+    static string convertionIntOnString(int intVar);
+    static int convertionStringOnInt(string number);
+    static string convertionUnsignedShortOnString(unsigned short var);
+    static float convertionStringOnFloat(string numberStr);
     static string loadLine();
     static char loadChar();
-    static int StringOnIntConvertion(string number);
     static string getNumber(string text, int charPosition);
     static int loadIntegerNumber();
     static string changeFirstLetterOnUppercaseAndOthersOnLowercase(string text);
@@ -25,9 +27,10 @@ public:
     static bool checkIfYearIsLeapYear(int year);
     static string getDateFromSelectedPeriod();
     static string getCurrentDate();
-    static string convertionUnsignedShortOnString(unsigned short var);
-    static float convertionStringOnFloat(string numberStr);
     static float getFloatNumber();
+    static int changeDateOnIntWithoutDashes(string dateStr);
+    static int changeDateOnInt(string dateStr);
+    static string changeDateOnString(int dateInt);
 };
 
 #endif

@@ -87,3 +87,25 @@ void Budget::addExpense(){
     }
 }
 
+void Budget::balanceOfCurrentMonth(){
+    cout << ">>>BILANS Z AKTUALNEGO MIESIACA<<<" << endl;
+    cout << endl;
+//    incomesMenager.printIncomesOfCurrentMonth();
+    cout << endl;
+    cout << "Wydatki: " << endl;
+    //printExpensesOfCurrentMonth();
+    cout << endl << "Podsumowanie: " << endl << endl;
+    cout << "Przychody: " << endl; // << printSumOfIncomesOfCurrentMonth();
+    cout << "Wydatki: " << endl; // << printSumOfExpensesOfCurrentMonth();
+    cout << "Bilans: " << endl;//showStatusOfBalanceOfCurrentMonth();
+
+    system("pause");
+    /*if(userMenager.ifUserIsLogged()){
+        incomesMenager->searchIncomesOfCurrentMonth();
+        //expensesMenager->balanceOfCurrentMonth(userMenager.getIDLoggedUser())
+    }
+    else {
+        cout << "Aby pokazac bilans, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
+    }*/
+}

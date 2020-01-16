@@ -22,7 +22,7 @@ Income IncomesMenager::enterDataNewIncome() {
     Income income;
     string item;
     float amount;
-    string date;
+    int date;
 
     income.setUserID(LOGGED_USER_ID);
     income.setIncomeID(incomesFile.getLastIncomeID() + 1);
@@ -44,8 +44,9 @@ Income IncomesMenager::enterDataNewIncome() {
     return income;
 }
 
-string IncomesMenager::getDateFromUser() {
-    string date;
+int IncomesMenager::getDateFromUser() {
+    string dateStr;
+    int date;
     cout << "Podaj date: " << endl;
     cout << "1. Z dnia dzisiejszego." << endl;
     cout << "2. Wybierz inna date." << endl;
@@ -56,12 +57,15 @@ string IncomesMenager::getDateFromUser() {
         switch(AssistantMethods::loadChar()) {
         case '1':
             cout << endl << "Wybrano date: ";
-            date = AssistantMethods::getCurrentDate();
+            dateStr = AssistantMethods::getCurrentDate();
+            cout << dateStr;
             cout << endl << endl;
+            date = AssistantMethods::changeDateOnInt(dateStr);
             return date;
         case '2': {
-            date = AssistantMethods::getDateFromSelectedPeriod();
+            dateStr = AssistantMethods::getDateFromSelectedPeriod();
             cout << endl;
+            date = AssistantMethods::changeDateOnInt(dateStr);
             return date;
         }
         default:
@@ -71,7 +75,60 @@ string IncomesMenager::getDateFromUser() {
     }
 }
 
-/*
+void IncomesMenager::printIncomeData(Income income){
+    cout << endl << "ID przychodu:         " << income.getIncomeID() << endl;
+    cout << "Data:                 " << income.getDate() << endl;
+    cout << "Rodzaj przychodu:     " << income.getItem()<< endl;
+    cout << "Wysokosc przychodu:   " << income.getAmount() << endl;
+}
+
+void IncomesMenager::printIncomesOfCurrentMonth(){
+    if(!incomes.empty()){
+        cout << "PRZYCHODY Z OBECNEGO MIESIACA: " << endl;
+        for (vector <Income> :: iterator itr = incomes.begin(); itr != incomes.end(); itr++)
+        {
+/*            if(itr -> getDate().substr(5,2))){
+                printIncomeData(*itr);
+            }*/
+        }
+        cout << endl;
+    }
+    else{
+        cout << endl << "Nie wprowadzono zadnych przychodow." << endl << endl;
+    }
+    system("pause");
+}
+
+/*void IncomesMenager::searchIncomesOfCurrentMonth(){
+    system("cls");
+    //int date = AssistantMethods::changeDateOnIntWithoutDashes(AssistantMethods::getCurrentDate());
+    string date = AssistantMethods::getCurrentDate();
+    //format date YYYY-MM-DD
+    string currentMonth = date.substr(5,2);
+
+    if(!incomes.empty()){
+        cout << "PRZYCHODY Z OBECNEGO MIESIACA: " << endl;
+        for (vector <Income> :: iterator itr = incomes.begin(); itr != incomes.end(); itr++)
+        {
+            if(itr -> getDate().substr(5,2)) == currentMonth){
+                printIncomeData(*itr);
+            }
+        }
+        cout << endl;
+    }
+    else{
+        cout << endl << "Nie wprowadzono zadnych przychodow." << endl << endl;
+    }
+    system("pause");
+}
+
+void IncomesMenager::printIncomeData(Income income){
+    cout << endl << "ID przychodu:         " << income.getIncomeID() << endl;
+    cout << "Data:                 " << income.getDate() << endl;
+    cout << "Rodzaj przychodu:     " << income.getItem()<< endl;
+    cout << "Wysokosc przychodu:   " << income.getAmount() << endl;
+}
+
 void AdresatMenadzer::wyswietlWszystkichAdresatow(){
     system("cls");
     if (!adresaci.empty()){

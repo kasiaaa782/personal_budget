@@ -10,7 +10,7 @@ void Income::setUserID(int newUserID){
         userID = newUserID;
 }
 
-void Income::setDate(string newDate){
+void Income::setDate(int newDate){
         date = newDate;
 }
 
@@ -29,7 +29,7 @@ int Income::getUserID(){
     return userID;
 }
 
-string Income::getDate(){
+int Income::getDate(){
     return date;
 }
 

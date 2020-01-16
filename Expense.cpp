@@ -10,7 +10,7 @@ void Expense::setUserID(int newUserID){
         userID = newUserID;
 }
 
-void Expense::setDate(string newDate){
+void Expense::setDate(int newDate){
         date = newDate;
 }
 
@@ -29,7 +29,7 @@ int Expense::getUserID(){
     return userID;
 }
 
-string Expense::getDate(){
+int Expense::getDate(){
     return date;
 }
 

@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int main() {
+int _main() {
     Budget budget("Users.xml", "Incomes.xml", "Expenses.xml");
     while (true) {
         if (budget.ifUserIsLogged() == false) {
@@ -52,19 +52,24 @@ int main() {
             case '7':
                 budget.userLogout();
                 break;
+            default:
+                cout << endl << "Nie ma takiej opcji w menu." << endl << endl;
+                system("pause");
+                break;
             }
         }
     }
     return 0;
 }
 
-#include "IncomesFile.h"
+#include "IncomesMenager.h"
 
-int _main()
+int main()
 {
     Budget budget("Users.xml", "Incomes.xml", "Expenses.xml");
-    ExpensesMenager expensesMenager("Expense.xml", 2);
-    expensesMenager.addExpense();
+    IncomesMenager IncomesMenager("Incomes.xml", 2);
+    budget.balanceOfCurrentMonth();
+
 
     return 0;
 }

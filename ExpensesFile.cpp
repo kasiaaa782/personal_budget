@@ -26,6 +26,7 @@ bool ExpensesFile::joinExpenseToFile(Expense expense){
     xml.AddElem("Amount", expense.getAmount());
 
     xml.Save("Expenses.xml");
+    setLastExpenseID(getLastExpenseID() + 1);
 
     return true;
 }
@@ -33,7 +34,8 @@ bool ExpensesFile::joinExpenseToFile(Expense expense){
 vector <Expense> ExpensesFile::loadExpensesFromFile(int idLoggedUser) {
     Expense expense;
     vector <Expense> expenses;
-
+    string dateStr;
+    int date;
     CMarkup xml;
     xml.Load( "Expenses.xml" );
     xml.FindElem();
@@ -46,7 +48,9 @@ vector <Expense> ExpensesFile::loadExpensesFromFile(int idLoggedUser) {
         expense.setUserID(atoi(MCD_2PCSZ(xml.GetData()))); //it is converted to an integer using atoi (MCD_2PCSZ is defined in Markup.h to return the string's const pointer)
         if(expense.getUserID() == idLoggedUser){
             xml.FindElem("Date");
-            expense.setDate(xml.GetData());
+            dateStr = xml.GetData();
+            date = AssistantMethods::changeDateOnInt(dateStr);
+            expense.setDate(date);
             xml.FindElem("Item");
             expense.setItem(xml.GetData());
             xml.FindElem("Amount");
