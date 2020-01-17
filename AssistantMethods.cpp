@@ -1,10 +1,32 @@
 #include "AssistantMethods.h"
 
-string AssistantMethods::IntOnStringConvertion(int number) {
+string AssistantMethods::convertionIntOnString(int intVar)
+{
     ostringstream ss;
-    ss << number;
+    ss << intVar;
     string str = ss.str();
     return str;
+}
+
+int AssistantMethods::convertionStringOnInt(string number) {
+    int numberInt;
+    istringstream iss(number);
+    iss >> numberInt;
+    return numberInt;
+}
+
+string AssistantMethods::convertionUnsignedShortOnString(unsigned short var) {
+    ostringstream ss;
+    ss << var;
+    string str = ss.str();
+    return str;
+}
+
+float AssistantMethods::convertionStringOnFloat(string numberStr) {
+    float number;
+    istringstream iss(numberStr);
+    iss >> number;
+    return number;
 }
 
 string AssistantMethods::loadLine() {
@@ -26,13 +48,6 @@ char AssistantMethods::loadChar() {
         cout << "To nie jest pojedynczy znak. Wpisz ponownie." << endl;
     }
     return varChar;
-}
-
-int AssistantMethods::StringOnIntConvertion(string number) {
-    int numberInt;
-    istringstream iss(number);
-    iss >> numberInt;
-    return numberInt;
 }
 
 string AssistantMethods::getNumber(string text, int charPosition) {
@@ -150,13 +165,6 @@ string AssistantMethods::getDateFromSelectedPeriod() {
     return dateStr;
 }
 
-string AssistantMethods::convertionUnsignedShortOnString(unsigned short var) {
-    ostringstream ss;
-    ss << var;
-    string str = ss.str();
-    return str;
-}
-
 string AssistantMethods::getCurrentDate(){
     //format RRRR-MM-DD
     string dateStr, year, month, day;
@@ -172,15 +180,7 @@ string AssistantMethods::getCurrentDate(){
         day = "0" + day;
     }
     dateStr = year + "-" + month + "-" + day;
-    cout << dateStr;
     return dateStr;
-}
-
-float AssistantMethods::convertionStringOnFloat(string numberStr) {
-    float number;
-    istringstream iss(numberStr);
-    iss >> number;
-    return number;
 }
 
 float AssistantMethods::getFloatNumber() {
@@ -194,4 +194,45 @@ float AssistantMethods::getFloatNumber() {
     }
     numberFloat = convertionStringOnFloat(number);
     return numberFloat;
+}
+
+int AssistantMethods::changeDateOnIntWithoutDashes(string dateStr){
+    //format YYYYMMDD
+    int date = 0;
+    dateStr.erase(4,1);
+    dateStr.erase(6,1);
+    date = atoi(dateStr.c_str());
+    return date;
+}
+
+int AssistantMethods::changeDateOnInt(string dateStr){
+    int date = 0;
+    dateStr.erase(4,1);
+    dateStr.erase(6,1);
+    date = atoi(dateStr.c_str());
+    return date;
+}
+
+string AssistantMethods::changeDateOnString(int dateInt){
+    string date = "";
+    date = convertionIntOnString(dateInt);
+    date.insert(4,"-");
+    date.insert(7,"-");
+    return date;
+}
+
+string AssistantMethods::getMonthFromDate(string date){
+    string month;
+    date.erase(0,5);
+    date.erase(2,3);
+    month = date;
+    return month;
+}
+
+bool AssistantMethods::sortByDateForIncomes(Income date1, Income date2){
+    return date1.getDate() < date2.getDate();
+}
+
+bool AssistantMethods::sortByDateForExpenses(Expense date1, Expense date2){
+    return date1.getDate() < date2.getDate();
 }

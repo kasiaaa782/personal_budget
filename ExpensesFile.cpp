@@ -9,6 +9,7 @@ int ExpensesFile::getLastExpenseID(){
 }
 
 bool ExpensesFile::joinExpenseToFile(Expense expense){
+    string dateStr;
     CMarkup xml;
     bool fileExists = xml.Load( "Expenses.xml" );
     if (!fileExists) {
@@ -21,11 +22,12 @@ bool ExpensesFile::joinExpenseToFile(Expense expense){
     xml.IntoElem();
     xml.AddElem("ExpenseID", expense.getExpenseID());
     xml.AddElem("UserID", expense.getUserID());
-    xml.AddElem("Date", expense.getDate());
+    dateStr = AssistantMethods::changeDateOnString(expense.getDate());
+    xml.AddElem("Date", dateStr);
     xml.AddElem("Item", expense.getItem());
     xml.AddElem("Amount", expense.getAmount());
-
     xml.Save("Expenses.xml");
+    setLastExpenseID(getLastExpenseID() + 1);
 
     return true;
 }
@@ -33,10 +35,10 @@ bool ExpensesFile::joinExpenseToFile(Expense expense){
 vector <Expense> ExpensesFile::loadExpensesFromFile(int idLoggedUser) {
     Expense expense;
     vector <Expense> expenses;
-
+    string dateStr;
+    int date;
     CMarkup xml;
     xml.Load( "Expenses.xml" );
-
     xml.FindElem();
     xml.IntoElem();
     while( xml.FindElem("Expense")) {
@@ -45,17 +47,19 @@ vector <Expense> ExpensesFile::loadExpensesFromFile(int idLoggedUser) {
         expense.setExpenseID(atoi(MCD_2PCSZ(xml.GetData()))); //it is converted to an integer using atoi (MCD_2PCSZ is defined in Markup.h to return the string's const pointer)
         xml.FindElem("UserID");
         expense.setUserID(atoi(MCD_2PCSZ(xml.GetData()))); //it is converted to an integer using atoi (MCD_2PCSZ is defined in Markup.h to return the string's const pointer)
-        xml.FindElem("Date");
-        expense.setDate(xml.GetData());
-        xml.FindElem("Item");
-        expense.setItem(xml.GetData());
-        xml.FindElem("Amount");
-        expense.setAmount(AssistantMethods::convertionStringOnFloat(xml.GetData()));
+        if(expense.getUserID() == idLoggedUser){
+            xml.FindElem("Date");
+            dateStr = xml.GetData();
+            date = AssistantMethods::changeDateOnInt(dateStr);
+            expense.setDate(date);
+            xml.FindElem("Item");
+            expense.setItem(xml.GetData());
+            xml.FindElem("Amount");
+            expense.setAmount(AssistantMethods::convertionStringOnFloat(xml.GetData()));
+            expenses.push_back(expense);
+        }
         xml.OutOfElem();
-        expenses.push_back(expense);
     }
     setLastExpenseID(expense.getExpenseID());
     return expenses;
 }
-
-

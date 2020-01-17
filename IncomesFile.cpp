@@ -9,6 +9,7 @@ int IncomesFile::getLastIncomeID(){
 }
 
 bool IncomesFile::joinIncomeToFile(Income income){
+    string dateStr;
     CMarkup xml;
     bool fileExists = xml.Load( "Incomes.xml" );
     if (!fileExists) {
@@ -21,18 +22,20 @@ bool IncomesFile::joinIncomeToFile(Income income){
     xml.IntoElem();
     xml.AddElem("IncomeID", income.getIncomeID());
     xml.AddElem("UserID", income.getUserID());
-    xml.AddElem("Date", income.getDate());
+    dateStr = AssistantMethods::changeDateOnString(income.getDate());
+    xml.AddElem("Date", dateStr);
     xml.AddElem("Item", income.getItem());
     xml.AddElem("Amount", income.getAmount());
-
     xml.Save("Incomes.xml");
-
+    setLastIncomeID(getLastIncomeID() + 1);
     return true;
 }
 
 vector <Income> IncomesFile::loadIncomesFromFile(int idLoggedUser) {
     Income income;
     vector <Income> incomes;
+    string dateStr;
+    int date;
 
     CMarkup xml;
     xml.Load( "Incomes.xml" );
@@ -41,17 +44,21 @@ vector <Income> IncomesFile::loadIncomesFromFile(int idLoggedUser) {
     while( xml.FindElem("Income")) {
         xml.IntoElem();
         xml.FindElem("IncomeID");
-        income.setIncomeID(atoi(MCD_2PCSZ(xml.GetData()))); //it is converted to an integer using atoi (MCD_2PCSZ is defined in Markup.h to return the string's const pointer)
+        income.setIncomeID(atoi(MCD_2PCSZ(xml.GetData())));
         xml.FindElem("UserID");
         income.setUserID(atoi(MCD_2PCSZ(xml.GetData()))); //it is converted to an integer using atoi (MCD_2PCSZ is defined in Markup.h to return the string's const pointer)
-        xml.FindElem("Date");
-        income.setDate(xml.GetData());
-        xml.FindElem("Item");
-        income.setItem(xml.GetData());
-        xml.FindElem("Amount");
-        income.setAmount(AssistantMethods::convertionStringOnFloat(xml.GetData()));
-        xml.OutOfElem(); //opuszczamy obiekt
-        incomes.push_back(income);
+        if(income.getUserID() == idLoggedUser){
+            xml.FindElem("Date");
+            dateStr = xml.GetData();
+            date = AssistantMethods::changeDateOnInt(dateStr);
+            income.setDate(date);
+            xml.FindElem("Item");
+            income.setItem(xml.GetData());
+            xml.FindElem("Amount");
+            income.setAmount(AssistantMethods::convertionStringOnFloat(xml.GetData()));
+            incomes.push_back(income);
+        }
+        xml.OutOfElem();
     }
     setLastIncomeID(income.getIncomeID());
     return incomes;

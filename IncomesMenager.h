@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <windows.h>
+#include <algorithm>
 
 #include "Income.h"
 #include "IncomesFile.h"
@@ -17,16 +18,19 @@ class IncomesMenager{
     IncomesFile incomesFile;
 
     Income enterDataNewIncome();
-    string getDateFromUser();
+    int getDateFromUser();
+    void printIncomeData(Income income);
 
 public:
     IncomesMenager(string incomesFileName, int loggedUserID)
         : incomesFile(incomesFileName), LOGGED_USER_ID(loggedUserID){
             incomes = incomesFile.loadIncomesFromFile(LOGGED_USER_ID);
+            sort( incomes.begin(), incomes.end(), AssistantMethods::sortByDateForIncomes);
     };
     void addIncome();
     void userLogout();
-    //void searchIncomesOfCurrentMonth();
+    void printIncomesOfCurrentMonth();
+    float sumOfIncomes();
     //void searchIncomesOfPreviousMonth();
     //void searchIncomesOfPassedPeriod();
 

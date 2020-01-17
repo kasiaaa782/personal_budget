@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <windows.h>
+#include <algorithm>
 
 #include "Expense.h"
 #include "ExpensesFile.h"
@@ -17,16 +18,19 @@ class ExpensesMenager{
     ExpensesFile expensesFile;
 
     Expense enterDataNewExpense();
-    string getDateFromUser();
+    int getDateFromUser();
+    void printExpenseData(Expense expense);
 
 public:
     ExpensesMenager(string expensesFileName, int loggedUserID)
         : expensesFile(expensesFileName), LOGGED_USER_ID(loggedUserID){
             expenses = expensesFile.loadExpensesFromFile(LOGGED_USER_ID);
+            sort( expenses.begin(), expenses.end(), AssistantMethods::sortByDateForExpenses);
     };
     void addExpense();
     void userLogout();
-    //void searchIncomesOfCurrentMonth();
+    void printExpensesOfCurrentMonth();
+    float sumOfExpenses();
     //void searchIncomesOfPreviousMonth();
     //void searchIncomesOfPassedPeriod();
 

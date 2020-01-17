@@ -36,7 +36,7 @@ public:
     char selectOptionFromUserMenu();
     void addIncome();
     void addExpense();
-    //void balanceOfCurrentMonth();
+    void balanceOfCurrentMonth();
     //void balanceOfPreviousMonth();
     //void balanceOfPassedPeriod();
     void changePassword();

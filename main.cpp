@@ -38,7 +38,7 @@ int main() {
                 cin.ignore();
                 break;
             case '3':
-                //budget.balanceOfCurrentMonth();
+                budget.balanceOfCurrentMonth();
                 break;
             case '4':
                 //budget.balanceOfPreviousMonth();
@@ -52,19 +52,27 @@ int main() {
             case '7':
                 budget.userLogout();
                 break;
+            default:
+                cout << endl << "Nie ma takiej opcji w menu." << endl << endl;
+                system("pause");
+                break;
             }
         }
     }
     return 0;
 }
 
-#include "IncomesFile.h"
+#include "IncomesMenager.h"
+#include "ExpensesMenager.h"
 
 int _main()
 {
     Budget budget("Users.xml", "Incomes.xml", "Expenses.xml");
-    ExpensesMenager expensesMenager("Expense.xml", 2);
-    expensesMenager.addExpense();
+    IncomesMenager incomesMenager("Incomes.xml", 2);
+    //incomesMenager.printIncomesOfCurrentMonth();
+    ExpensesMenager expensesMenager("Expenses.xml", 2);
+    //expensesMenager.printExpensesOfCurrentMonth();
+
 
     return 0;
 }
