@@ -30,8 +30,9 @@ public:
     void addIncome();
     void userLogout();
     void printIncomesOfCurrentMonth();
-    float sumOfIncomes();
-    //void searchIncomesOfPreviousMonth();
+    float sumOfIncomesOfCurrentMonth();
+    void printIncomesOfPreviousMonth();
+    float sumOfIncomesOfPreviousMonth();
     //void searchIncomesOfPassedPeriod();
 
 };

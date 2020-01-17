@@ -76,10 +76,10 @@ int ExpensesMenager::getDateFromUser() {
 }
 
 void ExpensesMenager::printExpenseData(Expense expense){
-    cout << endl << "ID wydatku:         " << expense.getExpenseID() << endl;
-    cout << "Data:               " << AssistantMethods::changeDateOnString(expense.getDate()) << endl;
-    cout << "Rodzaj wydatku:     " << expense.getItem()<< endl;
-    cout << "Wysokosc wydatku:   " << expense.getAmount() << endl;
+    cout << endl << "ID wydatku:           " << expense.getExpenseID() << endl;
+    cout << "Data:                 " << AssistantMethods::changeDateOnString(expense.getDate()) << endl;
+    cout << "Rodzaj wydatku:       " << expense.getItem()<< endl;
+    cout << "Wysokosc wydatku:     " << expense.getAmount() << endl;
 }
 
 void ExpensesMenager::printExpensesOfCurrentMonth(){
@@ -101,10 +101,52 @@ void ExpensesMenager::printExpensesOfCurrentMonth(){
     }
 }
 
-float ExpensesMenager::sumOfExpenses(){
+float ExpensesMenager::sumOfExpensesOfCurrentMonth(){
     float sum = 0;
-    for(vector <Expense> :: iterator itr = expenses.begin(); itr != expenses.end(); itr++){
-        sum = sum + itr->getAmount();
+    string currentMonth = AssistantMethods::getMonthFromDate(AssistantMethods::getCurrentDate());
+    string month;
+    if(!expenses.empty()){
+        for (vector <Expense> :: iterator itr = expenses.begin(); itr != expenses.end(); itr++){
+            month = AssistantMethods::getMonthFromDate(AssistantMethods::changeDateOnString(itr -> getDate()));
+            if(month == currentMonth){
+                sum = sum + itr->getAmount();
+            }
+        }
     }
     return sum;
 }
+
+void ExpensesMenager::printExpensesOfPreviousMonth(){
+    string previousMonth = AssistantMethods::getMonthFromDate(AssistantMethods::getDateOfPreviousMonth());
+    string month;
+    if(!expenses.empty()){
+        cout << "WYDATKI: " << endl;
+        for (vector <Expense> :: iterator itr = expenses.begin(); itr != expenses.end(); itr++)
+        {
+            month = AssistantMethods::getMonthFromDate(AssistantMethods::changeDateOnString(itr -> getDate()));
+            if(month == previousMonth){
+                printExpenseData(*itr);
+            }
+        }
+        cout << endl;
+    }
+    else{
+        cout << endl << "Nie wprowadzono zadnych wydatkow." << endl << endl;
+    }
+}
+
+float ExpensesMenager::sumOfExpensesOfPreviousMonth(){
+    float sum = 0;
+    string previousMonth = AssistantMethods::getMonthFromDate(AssistantMethods::getDateOfPreviousMonth());
+    string month;
+    if(!expenses.empty()){
+        for (vector <Expense> :: iterator itr = expenses.begin(); itr != expenses.end(); itr++){
+            month = AssistantMethods::getMonthFromDate(AssistantMethods::changeDateOnString(itr -> getDate()));
+            if(month == previousMonth){
+                sum = sum + itr->getAmount();
+            }
+        }
+    }
+    return sum;
+}
+

@@ -96,9 +96,34 @@ void Budget::balanceOfCurrentMonth(){
         incomesMenager->printIncomesOfCurrentMonth();
         expensesMenager->printExpensesOfCurrentMonth();
         cout << endl << "PODSUMOWNIE: " << endl << endl;
-        cout << "Przychody: " << incomesMenager->sumOfIncomes() << " zl." << endl;
-        cout << "Wydatki: " << expensesMenager->sumOfExpenses() << " zl." << endl;
-        balance = incomesMenager->sumOfIncomes() - expensesMenager->sumOfExpenses();
+        cout << "Przychody: " << incomesMenager->sumOfIncomesOfCurrentMonth() << " zl." << endl;
+        cout << "Wydatki: " << expensesMenager->sumOfExpensesOfCurrentMonth() << " zl." << endl;
+        balance = incomesMenager->sumOfIncomesOfCurrentMonth() - expensesMenager->sumOfExpensesOfCurrentMonth();
+        if(balance > 0){
+            cout << "Oszczednosci: " << balance << " zl." << endl;
+        } else {
+            cout << "Dlug: " << balance << " zl." << endl;
+        }
+        cout << endl;
+        system("pause");
+    } else {
+        cout << "Aby pokazac bilans, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
+    }
+}
+
+void Budget::balanceOfPreviousMonth(){
+    if(userMenager.ifUserIsLogged()){
+        float balance;
+        system("cls");
+        cout << ">>>BILANS Z POPRZEDNIEGO MIESIACA<<<" << endl;
+        cout << endl;
+        incomesMenager->printIncomesOfPreviousMonth();
+        expensesMenager->printExpensesOfPreviousMonth();
+        cout << endl << "PODSUMOWNIE: " << endl << endl;
+        cout << "Przychody: " << incomesMenager->sumOfIncomesOfPreviousMonth() << " zl." << endl;
+        cout << "Wydatki: " << expensesMenager->sumOfExpensesOfPreviousMonth() << " zl." << endl;
+        balance = incomesMenager->sumOfIncomesOfPreviousMonth() - expensesMenager->sumOfExpensesOfPreviousMonth();
         if(balance > 0){
             cout << "Oszczednosci: " << balance << " zl." << endl;
         } else {

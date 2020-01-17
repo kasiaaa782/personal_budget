@@ -30,7 +30,9 @@ public:
     void addExpense();
     void userLogout();
     void printExpensesOfCurrentMonth();
-    float sumOfExpenses();
+    float sumOfExpensesOfCurrentMonth();
+    void printExpensesOfPreviousMonth();
+    float sumOfExpensesOfPreviousMonth();
     //void searchIncomesOfPreviousMonth();
     //void searchIncomesOfPassedPeriod();
 

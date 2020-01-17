@@ -236,3 +236,27 @@ bool AssistantMethods::sortByDateForIncomes(Income date1, Income date2){
 bool AssistantMethods::sortByDateForExpenses(Expense date1, Expense date2){
     return date1.getDate() < date2.getDate();
 }
+
+string AssistantMethods::getDateOfPreviousMonth() {
+    //format RRRR-MM-DD
+    string date, year, month, day;
+    SYSTEMTIME st;
+    GetSystemTime(&st); // unsigned short
+    year = convertionUnsignedShortOnString(st.wYear);
+    month = convertionUnsignedShortOnString(st.wMonth - 1);
+    if(month == "0") {
+        year = convertionUnsignedShortOnString(st.wYear-1);
+    }
+    day = convertionUnsignedShortOnString(st.wDay);
+    if(month.size() == 1) {
+        month = "0" + month;
+    }
+    if(day.size() == 1) {
+        day = "0" + day;
+    }
+    if(month == "00") {
+        month ="12";
+    }
+    date = year + "-" + month + "-" + day;
+    return date;
+}
