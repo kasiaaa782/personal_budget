@@ -69,6 +69,7 @@ int main()
 {
     Budget budget("Users.xml", "Incomes.xml", "Expenses.xml");
     IncomesMenager incomesMenager("Incomes.xml", 2);
+    //incomesMenager.printIncomesOfCurrentMonth();
     ExpensesMenager expensesMenager("Expenses.xml", 2);
     expensesMenager.printExpensesOfCurrentMonth();
 

@@ -228,3 +228,11 @@ string AssistantMethods::getMonthFromDate(string date){
     month = date;
     return month;
 }
+
+bool AssistantMethods::sortByDateForIncomes(Income date1, Income date2){
+    return date1.getDate() < date2.getDate();
+}
+
+bool AssistantMethods::sortByDateForExpenses(Expense date1, Expense date2){
+    return date1.getDate() < date2.getDate();
+}

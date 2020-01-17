@@ -8,6 +8,9 @@
 #include <windows.h>
 #include <winbase.h>
 
+#include "Income.h"
+#include "Expense.h"
+
 using namespace std;
 
 class AssistantMethods{
@@ -32,6 +35,8 @@ public:
     static int changeDateOnInt(string dateStr);
     static string changeDateOnString(int dateInt);
     static string getMonthFromDate(string date);
+    static bool sortByDateForIncomes(Income date1, Income date2);
+    static bool sortByDateForExpenses(Expense date1, Expense date2);
 };
 
 #endif

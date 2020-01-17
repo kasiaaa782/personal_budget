@@ -83,6 +83,7 @@ void IncomesMenager::printIncomeData(Income income){
 }
 
 void IncomesMenager::printIncomesOfCurrentMonth(){
+
     string currentMonth = AssistantMethods::getMonthFromDate(AssistantMethods::getCurrentDate());
     string month;
     if(!incomes.empty()){

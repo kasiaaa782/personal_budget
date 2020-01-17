@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <windows.h>
+#include <algorithm>
 
 #include "Income.h"
 #include "IncomesFile.h"
@@ -24,6 +25,7 @@ public:
     IncomesMenager(string incomesFileName, int loggedUserID)
         : incomesFile(incomesFileName), LOGGED_USER_ID(loggedUserID){
             incomes = incomesFile.loadIncomesFromFile(LOGGED_USER_ID);
+            sort( incomes.begin(), incomes.end(), AssistantMethods::sortByDateForIncomes);
     };
     void addIncome();
     void userLogout();

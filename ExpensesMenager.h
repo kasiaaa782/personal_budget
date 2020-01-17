@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <windows.h>
+#include <algorithm>
 
 #include "Expense.h"
 #include "ExpensesFile.h"
@@ -24,6 +25,7 @@ public:
     ExpensesMenager(string expensesFileName, int loggedUserID)
         : expensesFile(expensesFileName), LOGGED_USER_ID(loggedUserID){
             expenses = expensesFile.loadExpensesFromFile(LOGGED_USER_ID);
+            sort( expenses.begin(), expenses.end(), AssistantMethods::sortByDateForExpenses);
     };
     void addExpense();
     void userLogout();
