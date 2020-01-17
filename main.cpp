@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int _main() {
+int main() {
     Budget budget("Users.xml", "Incomes.xml", "Expenses.xml");
     while (true) {
         if (budget.ifUserIsLogged() == false) {
@@ -38,7 +38,7 @@ int _main() {
                 cin.ignore();
                 break;
             case '3':
-                //budget.balanceOfCurrentMonth();
+                budget.balanceOfCurrentMonth();
                 break;
             case '4':
                 //budget.balanceOfPreviousMonth();
@@ -65,13 +65,13 @@ int _main() {
 #include "IncomesMenager.h"
 #include "ExpensesMenager.h"
 
-int main()
+int _main()
 {
     Budget budget("Users.xml", "Incomes.xml", "Expenses.xml");
     IncomesMenager incomesMenager("Incomes.xml", 2);
     //incomesMenager.printIncomesOfCurrentMonth();
     ExpensesMenager expensesMenager("Expenses.xml", 2);
-    expensesMenager.printExpensesOfCurrentMonth();
+    //expensesMenager.printExpensesOfCurrentMonth();
 
 
     return 0;

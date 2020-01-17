@@ -87,7 +87,7 @@ void IncomesMenager::printIncomesOfCurrentMonth(){
     string currentMonth = AssistantMethods::getMonthFromDate(AssistantMethods::getCurrentDate());
     string month;
     if(!incomes.empty()){
-        cout << "PRZYCHODY Z OBECNEGO MIESIACA: " << endl;
+        cout << "PRZYCHODY: " << endl;
         for (vector <Income> :: iterator itr = incomes.begin(); itr != incomes.end(); itr++)
         {
             month = AssistantMethods::getMonthFromDate(AssistantMethods::changeDateOnString(itr -> getDate()));
@@ -100,7 +100,14 @@ void IncomesMenager::printIncomesOfCurrentMonth(){
     else{
         cout << endl << "Nie wprowadzono zadnych przychodow." << endl << endl;
     }
-    system("pause");
+}
+
+float IncomesMenager::sumOfIncomes(){
+    float sum = 0;
+    for(vector <Income> :: iterator itr = incomes.begin(); itr != incomes.end(); itr++){
+        sum = sum + itr->getAmount();
+    }
+    return sum;
 }
 
 /*void IncomesMenager::searchIncomesOfCurrentMonth(){

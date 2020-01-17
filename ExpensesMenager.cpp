@@ -86,7 +86,7 @@ void ExpensesMenager::printExpensesOfCurrentMonth(){
     string currentMonth = AssistantMethods::getMonthFromDate(AssistantMethods::getCurrentDate());
     string month;
     if(!expenses.empty()){
-        cout << "WYDATKI Z OBECNEGO MIESIACA: " << endl;
+        cout << "WYDATKI: " << endl;
         for (vector <Expense> :: iterator itr = expenses.begin(); itr != expenses.end(); itr++)
         {
             month = AssistantMethods::getMonthFromDate(AssistantMethods::changeDateOnString(itr -> getDate()));
@@ -99,5 +99,12 @@ void ExpensesMenager::printExpensesOfCurrentMonth(){
     else{
         cout << endl << "Nie wprowadzono zadnych wydatkow." << endl << endl;
     }
-    system("pause");
+}
+
+float ExpensesMenager::sumOfExpenses(){
+    float sum = 0;
+    for(vector <Expense> :: iterator itr = expenses.begin(); itr != expenses.end(); itr++){
+        sum = sum + itr->getAmount();
+    }
+    return sum;
 }
