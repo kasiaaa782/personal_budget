@@ -153,7 +153,7 @@ bool AssistantMethods::checkIfYearIsLeapYear(int year) {
         return false;
 }
 
-string AssistantMethods::getDateFromSelectedPeriod() {
+string AssistantMethods::getEnteredDateFromUser() {
     string dateStr;
     cout << endl << "Wybierz date formatu RRRR-MM-DD: ";
     dateStr = AssistantMethods::loadLine();
@@ -221,12 +221,26 @@ string AssistantMethods::changeDateOnString(int dateInt){
     return date;
 }
 
+string getYearFromDate(string date){
+    string year;
+    date.erase(4,6);
+    year = date;
+    return year;
+}
+
 string AssistantMethods::getMonthFromDate(string date){
     string month;
     date.erase(0,5);
     date.erase(2,3);
     month = date;
     return month;
+}
+
+string getDayFromDate(string date){
+    string day;
+    date.erase(0,8);
+    day = date;
+    return day;
 }
 
 bool AssistantMethods::sortByDateForIncomes(Income date1, Income date2){

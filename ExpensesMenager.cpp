@@ -63,7 +63,7 @@ int ExpensesMenager::getDateFromUser() {
             date = AssistantMethods::changeDateOnInt(dateStr);
             return date;
         case '2': {
-            dateStr = AssistantMethods::getDateFromSelectedPeriod();
+            dateStr = AssistantMethods::getEnteredDateFromUser();
             cout << endl;
             date = AssistantMethods::changeDateOnInt(dateStr);
             return date;
@@ -150,3 +150,34 @@ float ExpensesMenager::sumOfExpensesOfPreviousMonth(){
     return sum;
 }
 
+void ExpensesMenager::printExpensesOfSelectedPeriod(int dateBegin, int dateEnd){
+    int date;
+    if(!expenses.empty()){
+        cout << "WYDATKI: " << endl;
+        for (vector <Expense> :: iterator itr = expenses.begin(); itr != expenses.end(); itr++)
+        {
+            date = itr -> getDate();
+            if( date >= dateBegin && date <= dateEnd ){
+                printExpenseData(*itr);
+            }
+        }
+        cout << endl;
+    }
+    else{
+        cout << endl << "Nie wprowadzono zadnych wydatkow." << endl << endl;
+    }
+}
+
+float ExpensesMenager::sumOfExpensesOfSelectedPeriod(int dateBegin, int dateEnd){
+    float sum = 0;
+    int date = 0;
+    if(!expenses.empty()){
+        for (vector <Expense> :: iterator itr = expenses.begin(); itr != expenses.end(); itr++){
+            date = itr -> getDate();
+            if( date >= dateBegin && date <= dateEnd ){
+                sum = sum + itr->getAmount();
+            }
+        }
+    }
+    return sum;
+}

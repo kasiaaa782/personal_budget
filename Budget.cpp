@@ -136,3 +136,34 @@ void Budget::balanceOfPreviousMonth(){
         system("pause");
     }
 }
+
+void Budget::balanceOfSelectedPeriod(){
+    if(userMenager.ifUserIsLogged()){
+        float balance;
+        int dateBegin, dateEnd;
+        system("cls");
+        cout << ">>>BILANS Z WYBRANEGO OKRESU CZASU<<<" << endl;
+        cout << endl;
+        cout << "Podaj date poczatkowa: " << endl;
+        dateBegin = AssistantMethods::changeDateOnInt(AssistantMethods::getEnteredDateFromUser());
+        cout << endl << "Podaj date koncowa: " << endl;
+        dateEnd = AssistantMethods::changeDateOnInt(AssistantMethods::getEnteredDateFromUser());
+        cout << endl;
+        incomesMenager->printIncomesOfSelectedPeriod(dateBegin, dateEnd);
+        expensesMenager->printExpensesOfSelectedPeriod(dateBegin, dateEnd);
+        cout << endl << "PODSUMOWNIE: " << endl << endl;
+        cout << "Przychody: " << incomesMenager->sumOfIncomesOfSelectedPeriod(dateBegin, dateEnd) << " zl." << endl;
+        cout << "Wydatki: " << expensesMenager->sumOfExpensesOfSelectedPeriod(dateBegin, dateEnd) << " zl." << endl;
+        balance = incomesMenager->sumOfIncomesOfSelectedPeriod(dateBegin, dateEnd) - expensesMenager->sumOfExpensesOfSelectedPeriod(dateBegin, dateEnd);
+        if(balance > 0){
+            cout << "Oszczednosci: " << balance << " zl." << endl;
+        } else {
+            cout << "Dlug: " << balance << " zl." << endl;
+        }
+        cout << endl;
+        system("pause");
+    } else {
+        cout << "Aby pokazac bilans, nalezy najpierw sie zalogowac" << endl;
+        system("pause");
+    }
+}

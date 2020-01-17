@@ -38,7 +38,7 @@ public:
     void addExpense();
     void balanceOfCurrentMonth();
     void balanceOfPreviousMonth();
-    //void balanceOfPassedPeriod();
+    void balanceOfSelectedPeriod();
     void changePassword();
 
 };

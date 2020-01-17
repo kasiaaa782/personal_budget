@@ -33,8 +33,8 @@ public:
     float sumOfExpensesOfCurrentMonth();
     void printExpensesOfPreviousMonth();
     float sumOfExpensesOfPreviousMonth();
-    //void searchIncomesOfPreviousMonth();
-    //void searchIncomesOfPassedPeriod();
+    void printExpensesOfSelectedPeriod(int dateBegin, int dateEnd);
+    float sumOfExpensesOfSelectedPeriod(int dateBegin, int dateEnd);
 
 };
 
