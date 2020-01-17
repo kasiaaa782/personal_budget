@@ -63,7 +63,7 @@ int IncomesMenager::getDateFromUser() {
             date = AssistantMethods::changeDateOnInt(dateStr);
             return date;
         case '2': {
-            dateStr = AssistantMethods::getDateFromSelectedPeriod();
+            dateStr = AssistantMethods::getEnteredDateFromUser();
             cout << endl;
             date = AssistantMethods::changeDateOnInt(dateStr);
             return date;
@@ -153,3 +153,37 @@ float IncomesMenager::sumOfIncomesOfPreviousMonth(){
     }
     return sum;
 }
+
+void  IncomesMenager::printIncomesOfSelectedPeriod(int dateBegin, int dateEnd){
+    int date = 0;
+    if(!incomes.empty()){
+        cout << "PRZYCHODY: " << endl;
+        for (vector <Income> :: iterator itr = incomes.begin(); itr != incomes.end(); itr++)
+        {
+            date = itr -> getDate();
+            if( date >= dateBegin && date <= dateEnd ){
+                printIncomeData(*itr);
+            }
+        }
+        cout << endl;
+    }
+    else{
+        cout << endl << "Nie wprowadzono zadnych przychodow." << endl << endl;
+    }
+}
+
+float IncomesMenager::sumOfIncomesOfSelectedPeriod(int dateBegin, int dateEnd){
+    float sum = 0;
+    int date = 0;
+    if(!incomes.empty()){
+        for (vector <Income> :: iterator itr = incomes.begin(); itr != incomes.end(); itr++)
+        {
+            date = itr -> getDate();
+            if( date >= dateBegin && date <= dateEnd ){
+                sum = sum + itr->getAmount();
+            }
+        }
+    }
+    return sum;
+}
+

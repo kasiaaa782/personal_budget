@@ -44,7 +44,7 @@ int main() {
                 budget.balanceOfPreviousMonth();
                 break;
             case '5':
-                //budget.balanceOfPassedPeriod();
+                budget.balanceOfSelectedPeriod();
                 break;
             case '6':
                 budget.changePassword();
