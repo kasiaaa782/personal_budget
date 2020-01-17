@@ -41,7 +41,7 @@ int main() {
                 budget.balanceOfCurrentMonth();
                 break;
             case '4':
-                //budget.balanceOfPreviousMonth();
+                budget.balanceOfPreviousMonth();
                 break;
             case '5':
                 //budget.balanceOfPassedPeriod();

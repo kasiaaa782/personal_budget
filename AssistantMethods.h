@@ -37,6 +37,7 @@ public:
     static string getMonthFromDate(string date);
     static bool sortByDateForIncomes(Income date1, Income date2);
     static bool sortByDateForExpenses(Expense date1, Expense date2);
+    static string getDateOfPreviousMonth();
 };
 
 #endif
