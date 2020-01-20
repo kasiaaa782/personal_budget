@@ -9,6 +9,8 @@
 #include "AssistantMethods.h"
 #include "XMLFile.h"
 #include "Markup.h"
+#include "DateClass.h"
+
 
 using namespace std;
 

@@ -45,6 +45,8 @@ int main() {
                 break;
             case '5':
                 budget.balanceOfSelectedPeriod();
+                cin.clear();
+                cin.ignore();
                 break;
             case '6':
                 budget.changePassword();
@@ -61,20 +63,4 @@ int main() {
     }
     return 0;
 }
-
-#include "IncomesMenager.h"
-#include "ExpensesMenager.h"
-
-int _main()
-{
-    Budget budget("Users.xml", "Incomes.xml", "Expenses.xml");
-    IncomesMenager incomesMenager("Incomes.xml", 2);
-    //incomesMenager.printIncomesOfCurrentMonth();
-    ExpensesMenager expensesMenager("Expenses.xml", 2);
-    //expensesMenager.printExpensesOfCurrentMonth();
-
-
-    return 0;
-}
-
 

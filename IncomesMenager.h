@@ -25,7 +25,7 @@ public:
     IncomesMenager(string incomesFileName, int loggedUserID)
         : incomesFile(incomesFileName), LOGGED_USER_ID(loggedUserID){
             incomes = incomesFile.loadIncomesFromFile(LOGGED_USER_ID);
-            sort( incomes.begin(), incomes.end(), AssistantMethods::sortByDateForIncomes);
+            sort( incomes.begin(), incomes.end(), DateClass::sortByDateForIncomes);
     };
     void addIncome();
     void userLogout();

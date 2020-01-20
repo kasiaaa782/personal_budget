@@ -1,15 +1,11 @@
 #ifndef ASSISTANTMETHODS.H
-#define ASSISTANTMETHODS
+#define ASSISTANTMETHODS.H
 
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <algorithm>
 #include <windows.h>
-#include <winbase.h>
-
-#include "Income.h"
-#include "Expense.h"
 
 using namespace std;
 
@@ -20,26 +16,13 @@ public:
     static int convertionStringOnInt(string number);
     static string convertionUnsignedShortOnString(unsigned short var);
     static float convertionStringOnFloat(string numberStr);
+    static string convertionFloatOnString(float floatNumber);
     static string loadLine();
     static char loadChar();
-    static string getNumber(string text, int charPosition);
     static int loadIntegerNumber();
     static string changeFirstLetterOnUppercaseAndOthersOnLowercase(string text);
-    static bool checkFormatDate(string dateStr);
-    static int amountOfDaysInMonth(int monthNumber, int year);
-    static bool checkIfYearIsLeapYear(int year);
-    static string getEnteredDateFromUser();
-    static string getCurrentDate();
+    static string getNumberFromText(string text, int charPosition);
     static float getFloatNumber();
-    static int changeDateOnIntWithoutDashes(string dateStr);
-    static int changeDateOnInt(string dateStr);
-    static string changeDateOnString(int dateInt);
-    static string getYearFromDate(string date);
-    static string getMonthFromDate(string date);
-    static string getDayFromDate(string date);
-    static bool sortByDateForIncomes(Income date1, Income date2);
-    static bool sortByDateForExpenses(Expense date1, Expense date2);
-    static string getDateOfPreviousMonth();
 };
 
 #endif

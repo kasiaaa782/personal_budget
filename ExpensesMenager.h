@@ -25,7 +25,7 @@ public:
     ExpensesMenager(string expensesFileName, int loggedUserID)
         : expensesFile(expensesFileName), LOGGED_USER_ID(loggedUserID){
             expenses = expensesFile.loadExpensesFromFile(LOGGED_USER_ID);
-            sort( expenses.begin(), expenses.end(), AssistantMethods::sortByDateForExpenses);
+            sort( expenses.begin(), expenses.end(), DateClass::sortByDateForExpenses);
     };
     void addExpense();
     void userLogout();
