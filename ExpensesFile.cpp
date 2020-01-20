@@ -22,10 +22,10 @@ bool ExpensesFile::joinExpenseToFile(Expense expense){
     xml.IntoElem();
     xml.AddElem("ExpenseID", expense.getExpenseID());
     xml.AddElem("UserID", expense.getUserID());
-    dateStr = AssistantMethods::changeDateOnString(expense.getDate());
+    dateStr = DateClass::changeDateOnString(expense.getDate());
     xml.AddElem("Date", dateStr);
     xml.AddElem("Item", expense.getItem());
-    xml.AddElem("Amount", expense.getAmount());
+    xml.AddElem("Amount", AssistantMethods::convertionFloatOnString(expense.getAmount()));
     xml.Save("Expenses.xml");
     setLastExpenseID(getLastExpenseID() + 1);
 
@@ -50,7 +50,7 @@ vector <Expense> ExpensesFile::loadExpensesFromFile(int idLoggedUser) {
         if(expense.getUserID() == idLoggedUser){
             xml.FindElem("Date");
             dateStr = xml.GetData();
-            date = AssistantMethods::changeDateOnInt(dateStr);
+            date = DateClass::changeDateOnInt(dateStr);
             expense.setDate(date);
             xml.FindElem("Item");
             expense.setItem(xml.GetData());

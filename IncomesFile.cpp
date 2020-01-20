@@ -22,10 +22,10 @@ bool IncomesFile::joinIncomeToFile(Income income){
     xml.IntoElem();
     xml.AddElem("IncomeID", income.getIncomeID());
     xml.AddElem("UserID", income.getUserID());
-    dateStr = AssistantMethods::changeDateOnString(income.getDate());
+    dateStr = DateClass::changeDateOnString(income.getDate());
     xml.AddElem("Date", dateStr);
     xml.AddElem("Item", income.getItem());
-    xml.AddElem("Amount", income.getAmount());
+    xml.AddElem("Amount", AssistantMethods::convertionFloatOnString(income.getAmount()));
     xml.Save("Incomes.xml");
     setLastIncomeID(getLastIncomeID() + 1);
     return true;
@@ -50,7 +50,7 @@ vector <Income> IncomesFile::loadIncomesFromFile(int idLoggedUser) {
         if(income.getUserID() == idLoggedUser){
             xml.FindElem("Date");
             dateStr = xml.GetData();
-            date = AssistantMethods::changeDateOnInt(dateStr);
+            date = DateClass::changeDateOnInt(dateStr);
             income.setDate(date);
             xml.FindElem("Item");
             income.setItem(xml.GetData());

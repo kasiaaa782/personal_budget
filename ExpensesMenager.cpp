@@ -57,15 +57,15 @@ int ExpensesMenager::getDateFromUser() {
         switch(AssistantMethods::loadChar()) {
         case '1':
             cout << endl << "Wybrano date: ";
-            dateStr = AssistantMethods::getCurrentDate();
+            dateStr = DateClass::getCurrentDate();
             cout << dateStr;
             cout << endl << endl;
-            date = AssistantMethods::changeDateOnInt(dateStr);
+            date = DateClass::changeDateOnInt(dateStr);
             return date;
         case '2': {
-            dateStr = AssistantMethods::getEnteredDateFromUser();
+            dateStr = DateClass::getEnteredDateFromUser();
             cout << endl;
-            date = AssistantMethods::changeDateOnInt(dateStr);
+            date = DateClass::changeDateOnInt(dateStr);
             return date;
         }
         default:
@@ -77,19 +77,19 @@ int ExpensesMenager::getDateFromUser() {
 
 void ExpensesMenager::printExpenseData(Expense expense){
     cout << endl << "ID wydatku:           " << expense.getExpenseID() << endl;
-    cout << "Data:                 " << AssistantMethods::changeDateOnString(expense.getDate()) << endl;
+    cout << "Data:                 " << DateClass::changeDateOnString(expense.getDate()) << endl;
     cout << "Rodzaj wydatku:       " << expense.getItem()<< endl;
     cout << "Wysokosc wydatku:     " << expense.getAmount() << endl;
 }
 
 void ExpensesMenager::printExpensesOfCurrentMonth(){
-    string currentMonth = AssistantMethods::getMonthFromDate(AssistantMethods::getCurrentDate());
+    string currentMonth = DateClass::getMonthFromDate(DateClass::getCurrentDate());
     string month;
     if(!expenses.empty()){
         cout << "WYDATKI: " << endl;
         for (vector <Expense> :: iterator itr = expenses.begin(); itr != expenses.end(); itr++)
         {
-            month = AssistantMethods::getMonthFromDate(AssistantMethods::changeDateOnString(itr -> getDate()));
+            month = DateClass::getMonthFromDate(DateClass::changeDateOnString(itr -> getDate()));
             if(month == currentMonth){
                 printExpenseData(*itr);
             }
@@ -103,11 +103,11 @@ void ExpensesMenager::printExpensesOfCurrentMonth(){
 
 float ExpensesMenager::sumOfExpensesOfCurrentMonth(){
     float sum = 0;
-    string currentMonth = AssistantMethods::getMonthFromDate(AssistantMethods::getCurrentDate());
+    string currentMonth = DateClass::getMonthFromDate(DateClass::getCurrentDate());
     string month;
     if(!expenses.empty()){
         for (vector <Expense> :: iterator itr = expenses.begin(); itr != expenses.end(); itr++){
-            month = AssistantMethods::getMonthFromDate(AssistantMethods::changeDateOnString(itr -> getDate()));
+            month = DateClass::getMonthFromDate(DateClass::changeDateOnString(itr -> getDate()));
             if(month == currentMonth){
                 sum = sum + itr->getAmount();
             }
@@ -117,13 +117,13 @@ float ExpensesMenager::sumOfExpensesOfCurrentMonth(){
 }
 
 void ExpensesMenager::printExpensesOfPreviousMonth(){
-    string previousMonth = AssistantMethods::getMonthFromDate(AssistantMethods::getDateOfPreviousMonth());
+    string previousMonth = DateClass::getMonthFromDate(DateClass::getDateOfPreviousMonth());
     string month;
     if(!expenses.empty()){
         cout << "WYDATKI: " << endl;
         for (vector <Expense> :: iterator itr = expenses.begin(); itr != expenses.end(); itr++)
         {
-            month = AssistantMethods::getMonthFromDate(AssistantMethods::changeDateOnString(itr -> getDate()));
+            month = DateClass::getMonthFromDate(DateClass::changeDateOnString(itr -> getDate()));
             if(month == previousMonth){
                 printExpenseData(*itr);
             }
@@ -137,11 +137,11 @@ void ExpensesMenager::printExpensesOfPreviousMonth(){
 
 float ExpensesMenager::sumOfExpensesOfPreviousMonth(){
     float sum = 0;
-    string previousMonth = AssistantMethods::getMonthFromDate(AssistantMethods::getDateOfPreviousMonth());
+    string previousMonth = DateClass::getMonthFromDate(DateClass::getDateOfPreviousMonth());
     string month;
     if(!expenses.empty()){
         for (vector <Expense> :: iterator itr = expenses.begin(); itr != expenses.end(); itr++){
-            month = AssistantMethods::getMonthFromDate(AssistantMethods::changeDateOnString(itr -> getDate()));
+            month = DateClass::getMonthFromDate(DateClass::changeDateOnString(itr -> getDate()));
             if(month == previousMonth){
                 sum = sum + itr->getAmount();
             }

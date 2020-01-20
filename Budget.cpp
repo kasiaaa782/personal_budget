@@ -145,9 +145,9 @@ void Budget::balanceOfSelectedPeriod(){
         cout << ">>>BILANS Z WYBRANEGO OKRESU CZASU<<<" << endl;
         cout << endl;
         cout << "Podaj date poczatkowa: " << endl;
-        dateBegin = AssistantMethods::changeDateOnInt(AssistantMethods::getEnteredDateFromUser());
+        dateBegin = DateClass::changeDateOnInt(DateClass::getEnteredDateFromUser());
         cout << endl << "Podaj date koncowa: " << endl;
-        dateEnd = AssistantMethods::changeDateOnInt(AssistantMethods::getEnteredDateFromUser());
+        dateEnd = DateClass::changeDateOnInt(DateClass::getEnteredDateFromUser());
         cout << endl;
         incomesMenager->printIncomesOfSelectedPeriod(dateBegin, dateEnd);
         expensesMenager->printExpensesOfSelectedPeriod(dateBegin, dateEnd);

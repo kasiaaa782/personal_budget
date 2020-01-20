@@ -57,15 +57,15 @@ int IncomesMenager::getDateFromUser() {
         switch(AssistantMethods::loadChar()) {
         case '1':
             cout << endl << "Wybrano date: ";
-            dateStr = AssistantMethods::getCurrentDate();
+            dateStr = DateClass::getCurrentDate();
             cout << dateStr;
             cout << endl << endl;
-            date = AssistantMethods::changeDateOnInt(dateStr);
+            date = DateClass::changeDateOnInt(dateStr);
             return date;
         case '2': {
-            dateStr = AssistantMethods::getEnteredDateFromUser();
+            dateStr = DateClass::getEnteredDateFromUser();
             cout << endl;
-            date = AssistantMethods::changeDateOnInt(dateStr);
+            date = DateClass::changeDateOnInt(dateStr);
             return date;
         }
         default:
@@ -77,20 +77,20 @@ int IncomesMenager::getDateFromUser() {
 
 void IncomesMenager::printIncomeData(Income income){
     cout << endl << "ID przychodu:         " << income.getIncomeID() << endl;
-    cout << "Data:                 " << AssistantMethods::changeDateOnString(income.getDate()) << endl;
+    cout << "Data:                 " << DateClass::changeDateOnString(income.getDate()) << endl;
     cout << "Rodzaj przychodu:     " << income.getItem()<< endl;
     cout << "Wysokosc przychodu:   " << income.getAmount() << endl;
 }
 
 void IncomesMenager::printIncomesOfCurrentMonth(){
 
-    string currentMonth = AssistantMethods::getMonthFromDate(AssistantMethods::getCurrentDate());
+    string currentMonth = DateClass::getMonthFromDate(DateClass::getCurrentDate());
     string month;
     if(!incomes.empty()){
         cout << "PRZYCHODY: " << endl;
         for (vector <Income> :: iterator itr = incomes.begin(); itr != incomes.end(); itr++)
         {
-            month = AssistantMethods::getMonthFromDate(AssistantMethods::changeDateOnString(itr -> getDate()));
+            month = DateClass::getMonthFromDate(DateClass::changeDateOnString(itr -> getDate()));
             if(month == currentMonth){
                 printIncomeData(*itr);
             }
@@ -104,12 +104,12 @@ void IncomesMenager::printIncomesOfCurrentMonth(){
 
 float IncomesMenager::sumOfIncomesOfCurrentMonth(){
     float sum = 0;
-    string currentMonth = AssistantMethods::getMonthFromDate(AssistantMethods::getCurrentDate());
+    string currentMonth = DateClass::getMonthFromDate(DateClass::getCurrentDate());
     string month;
     if(!incomes.empty()){
         for (vector <Income> :: iterator itr = incomes.begin(); itr != incomes.end(); itr++)
         {
-            month = AssistantMethods::getMonthFromDate(AssistantMethods::changeDateOnString(itr -> getDate()));
+            month = DateClass::getMonthFromDate(DateClass::changeDateOnString(itr -> getDate()));
             if(month == currentMonth){
                 sum = sum + itr->getAmount();
             }
@@ -120,13 +120,13 @@ float IncomesMenager::sumOfIncomesOfCurrentMonth(){
 
 void IncomesMenager::printIncomesOfPreviousMonth(){
 
-    string previousMonth = AssistantMethods::getMonthFromDate(AssistantMethods::getDateOfPreviousMonth());
+    string previousMonth = DateClass::getMonthFromDate(DateClass::getDateOfPreviousMonth());
     string month;
     if(!incomes.empty()){
         cout << "PRZYCHODY: " << endl;
         for (vector <Income> :: iterator itr = incomes.begin(); itr != incomes.end(); itr++)
         {
-            month = AssistantMethods::getMonthFromDate(AssistantMethods::changeDateOnString(itr -> getDate()));
+            month = DateClass::getMonthFromDate(DateClass::changeDateOnString(itr -> getDate()));
             if(month == previousMonth){
                 printIncomeData(*itr);
             }
@@ -140,12 +140,12 @@ void IncomesMenager::printIncomesOfPreviousMonth(){
 
 float IncomesMenager::sumOfIncomesOfPreviousMonth(){
     float sum = 0;
-    string previousMonth = AssistantMethods::getMonthFromDate(AssistantMethods::getDateOfPreviousMonth());
+    string previousMonth = DateClass::getMonthFromDate(DateClass::getDateOfPreviousMonth());
     string month;
     if(!incomes.empty()){
         for (vector <Income> :: iterator itr = incomes.begin(); itr != incomes.end(); itr++)
         {
-            month = AssistantMethods::getMonthFromDate(AssistantMethods::changeDateOnString(itr -> getDate()));
+            month = DateClass::getMonthFromDate(DateClass::changeDateOnString(itr -> getDate()));
             if(month == previousMonth){
                 sum = sum + itr->getAmount();
             }
