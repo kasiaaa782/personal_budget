@@ -44,9 +44,9 @@ vector <Expense> ExpensesFile::loadExpensesFromFile(int idLoggedUser) {
     while( xml.FindElem("Expense")) {
         xml.IntoElem();
         xml.FindElem("ExpenseID");
-        expense.setExpenseID(atoi(MCD_2PCSZ(xml.GetData()))); //it is converted to an integer using atoi (MCD_2PCSZ is defined in Markup.h to return the string's const pointer)
+        expense.setExpenseID(atoi(MCD_2PCSZ(xml.GetData())));
         xml.FindElem("UserID");
-        expense.setUserID(atoi(MCD_2PCSZ(xml.GetData()))); //it is converted to an integer using atoi (MCD_2PCSZ is defined in Markup.h to return the string's const pointer)
+        expense.setUserID(atoi(MCD_2PCSZ(xml.GetData())));
         if(expense.getUserID() == idLoggedUser){
             xml.FindElem("Date");
             dateStr = xml.GetData();

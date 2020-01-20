@@ -7,6 +7,8 @@ bool DateClass::checkFormatDate(string dateStr){
     int amountDays;
     if(dateStr.length() < 10 || dateStr[4] != '-' || dateStr[7] != '-' ){
         cout << "Niepoprawny format!" << endl;
+        cin.clear();
+        cin.ignore();
         return false;
     }
     yearStr = dateStr.substr(0,4);
@@ -18,11 +20,15 @@ bool DateClass::checkFormatDate(string dateStr){
 
     if ((yearInt < 2000) || (monthInt > 12) || (dayStr.length() > 31)){
         cout << "Niepoprawna data!" << endl;
+        cin.clear();
+        cin.ignore();
         return false;
     } else {
         amountDays = amountOfDaysInMonth(monthInt, yearInt);
         if (amountDays < dayInt ) {
             cout << "Niepoprawna data!" << endl;
+            cin.clear();
+            cin.ignore();
             return false;
         }
     }
@@ -74,7 +80,11 @@ string DateClass::getEnteredDateFromUser() {
     cout << endl << "Wybierz date formatu RRRR-MM-DD: ";
     dateStr = AssistantMethods::loadLine();
     string yearStr, monthStr, dayStr;
+    cin.clear();
+    cin.ignore();
     while(DateClass::checkFormatDate(dateStr)==false){
+        cin.clear();
+        cin.ignore();
         cout << "Podaj ponownie date: ";
         cin >> dateStr;
     }
